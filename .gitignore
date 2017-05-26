@@ -1,0 +1,8 @@
+.idea
+*.pyc
+tmp/
+.bundle
+odoo
+vendor/*
+*.zip
+addons/backup
