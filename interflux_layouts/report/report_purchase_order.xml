@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="report_purchase_order">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'interflux_layouts.report_purchase_order_document')"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_purchase_order_document">
+            <xpath expr="//t[@t-call='report.external_layout']" position="replace">
+                <t t-call="interflux_layouts.external_purchase_order_quotation_layout">
+                    <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+                    <div class="page">
+                        <!--<div class="row">
+                            <div class="col-xs-6" style="font-size:12px;">
+                                <span>
+                                    <strong>Vendor Code :</strong>
+                                </span>
+                                <span>
+                                    <div t-field="o.partner_id"
+                                         t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true}"/>
+                                </span>
+                                <br/>
+                                <span>
+                                    <strong>Attention :</strong>
+                                </span>
+                                <span t-field="o.attn"/>
+                                <br/>
+                                <span>
+                                    <strong>Tel :</strong>
+                                </span>
+                                <span t-field="o.attn_tel"/>
+                                <br/>
+                                <span>
+                                    <strong>Fax :</strong>
+                                </span>
+                                <span t-field="o.fax"/>
+                                <br/>
+                            </div>
+                            <div class="col-xs-6 pull-right" style="font-size:12px;">
+
+                                <h3 style="margin-left:100px;" t-if="o.state != 'draft'">
+                                    <strong>Purchase Order</strong>
+                                </h3>
+                                <h3 style="margin-left:100px;" t-if="o.state == 'draft'">
+                                    <strong>Request for Quotation</strong>
+                                </h3>
+                                <div style="margin-left:100px;">
+                                    <div class="invoice_details" t-if="o.name">
+                                        <span>P/O NO:</span>
+                                        <span t-field="o.name"/>
+                                    </div>
+                                    <div class="invoice_details" t-if="o.date_order">
+                                        <span>Date:</span>
+                                        <span t-field="o.date_order"  t-field-options='{"format": "d MMMM y"}'/>
+                                    </div>
+                                    <strong>SHIP TO:</strong>
+                                    <br/>
+                                    <span t-field="o.picking_type_id.warehouse_id.partner_id.name"/>
+                                    <br/>
+                                    <span t-field="o.picking_type_id.warehouse_id.partner_id.street"/>
+                                    <span t-field="o.picking_type_id.warehouse_id.partner_id.street2"/>
+                                    <span t-field="o.picking_type_id.warehouse_id.partner_id.city"/>
+                                    <br/>
+                                    <span t-field="o.picking_type_id.warehouse_id.partner_id.country_id.name"/>
+                                    <span t-field="o.picking_type_id.warehouse_id.partner_id.zip"/>
+                                    <br/>
+                                    &#x261E;
+                                    <strong>Please avoid lunch time 12pm-1pm</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-xs-3" style="align: center; text-align: center;">
+                                <strong>SHIP VIA</strong>
+                            </div>
+                            <div class="col-xs-3" style="align: center; text-align: center;">
+                                <strong>TERMS</strong>
+                            </div>
+                            <div class="col-xs-3" style="align: center; text-align: center;">
+                                <strong>Delivery Date</strong>
+                            </div>
+                            <div class="col-xs-3 list-inline" style="align: center; text-align: center;">
+                                <strong>Page</strong>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3" style="align: center; text-align: center;">
+                                <span t-field="o.incoterm_id"/>
+                            </div>
+                            <div class="col-xs-3" style="align: center; text-align: center;">
+                                <span t-field="o.payment_term_id"/>
+                            </div>
+                            <div class="col-xs-3" style="align: center; text-align: center;">
+                                <span t-field="o.minimum_planned_date"/>
+                            </div>
+                            <div class="col-xs-3 text-center">
+                                <span>Page </span>
+                                <span class="page"/> of <span class="topage" />
+                            </div>
+                        </div>-->
+                        <br/><br/>
+                        <br/><br/>
+                        <br/><br/>
+                        <br/><br/>
+                        <br/><br/>
+                        <br/><br/>
+                        <br/><br/>
+                        <div class="row">
+                            <table border="1pt solid black" class="table1 table-condensed"
+                                   style="table-layout: fixed; page-break-inside:auto; width:100%; border:1px solid black;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"
+                                            style="border-right:1px solid black;width:10%;font-size: 12px;vertical-align:middle;border-bottom:1px solid black; text-align: center;">
+                                            ITEM NO.
+                                        </th>
+                                        <th class="text-center"
+                                            style="border-right:1px solid black;width:40%;font-size: 12px;vertical-align:middle;border-bottom:1px solid black;">
+                                            DESCRIPTION
+                                        </th>
+                                        <th class="text-center"
+                                            style="border-right:1px solid black;width:15%;font-size: 12px;vertical-align:middle;border-bottom:1px solid black;">
+                                            QTY
+                                        </th>
+                                        <th class="text-center"
+                                            style="border-right:1px solid black;width:20%;font-size: 12px;vertical-align:middle;border-bottom:1px solid black;">
+                                            PRICE
+                                        </th>
+                                        <th class="text-center"
+                                            style="width:15%;font-size: 12px;vertical-align:middle;border-bottom:1px solid black;">
+                                            AMOUNT
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody text-center">
+                                    <t t-set="i" t-value="0"/>
+                                    <tr t-foreach="o.order_line" t-as="line">
+                                        <t t-set="i" t-value="i+1"/>
+                                        <td class="text-center"
+                                            style="width:10%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black; text-align: center;">
+                                            <span t-esc="i"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:40%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:15%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                            <!--<span t-field="line.product_qty"/>-->
+                                            <span t-esc="'{0:,.2f}'.format(int(line.product_qty))"/>
+                                            <span t-field="line.product_uom.name"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:20%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                            <span t-esc="'{0:,.2f}'.format(int(line.price_unit))"/>
+                                            <br/>
+                                            <span>Discount:</span>
+                                            <span t-field="line.discount"/>
+                                            <span>%</span>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:15%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                            <span t-field="line.price_subtotal"
+                                                  t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <span>Requestor:</span>
+                                <span>
+                                    <strong>
+                                        <span t-field="user.name"/>
+                                    </strong>
+                                </span>
+                            </div>
+                            <div class="col-xs-2" style="font-size:12px; text-align:right;">
+                                <span>
+                                    <strong>Sub Total</strong>
+                                </span>
+                                <br></br>
+                                <span>
+                                    <strong>Total Discount</strong>
+                                </span>
+                                <br></br>
+                                <span>
+                                    <strong>Total</strong>
+                                </span>
+                            </div>
+                            <div class="col-xs-2" style="font-size:12px; text-align:right;">
+                                <span t-field="o.amount_untaxed"
+                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                <br></br>
+                                <span t-field="o.amount_tax"
+                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                <br></br>
+                                <span t-field="o.amount_total"
+                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</openerp>

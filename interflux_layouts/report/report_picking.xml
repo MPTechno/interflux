@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="stock.report_picking">
+            <xpath expr="//t[@t-call='report.external_layout']" position="replace">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="interflux_layouts.external_picking_layout">
+                        <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+                        <div class="page">
+                            <div class="row" style="text-align:center;">
+                                <div class="col-xs-4"></div>
+                                <div class="col-xs-4" style="align: center;">
+                                    <h3>
+                                        <strong><span>Delivery Order</span></strong>
+                                    </h3>
+                                </div>
+                                <div class="col-xs-4"></div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-xs-3" style="font-size:10px;margin-top:5px; text-align: left;">
+                                    <div t-if="o.picking_type_id.code=='incoming' and o.partner_id">
+                                        <span>
+                                            Supplier Address:
+                                        </span>
+                                    </div>
+                                    <div t-if="o.picking_type_id.code=='internal' and o.partner_id">
+                                        <span>
+                                            Warehouse Address:
+                                        </span>
+                                    </div>
+                                    <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
+                                        <span>
+                                            Delivery Address:
+                                        </span>
+                                    </div>
+                                    <div t-if="o.partner_id" name="partner_header">
+                                        <div>
+                                            <strong>
+                                                <span t-esc="o.partner_id.parent_id and o.partner_id.parent_id.name or o.partner_id.name"/>
+                                            </strong>
+                                            <br/>
+                                            <span t-esc="o.partner_id.parent_id and o.partner_id.parent_id.street or o.partner_id.street"/>
+                                            <br/>
+                                            <span t-esc="o.partner_id.parent_id and o.partner_id.parent_id.street2 or o.partner_id.street2"/>
+                                            <br/>
+                                            <span t-esc="o.partner_id.parent_id and o.partner_id.parent_id.zip or o.partner_id.zip"/>
+                                            <span t-esc="o.partner_id.parent_id and (o.partner_id.parent_id.country_id and o.partner_id.parent_id.country_id.name or '') or (o.partner_id.country_id and o.partner_id.country_id.name or '')"/>
+
+                                        </div>
+                                        <p t-if="o.partner_id.vat">VAT:
+                                            <span t-field="o.partner_id.vat"/>
+                                        </p>
+                                    </div>
+                                    Attn :
+                                    <span t-field="o.attn"/>
+                                    <br/>
+                                    Tel :
+                                    <span t-field="o.attn_tel"/>
+                                </div>
+                                <div class="col-xs-5" style="font-size:10px;margin-top:15px;">
+                                    <style>
+                                        .invoice_details{
+                                        width:100%;}
+                                        .invoice_details &gt; span{
+                                        width:38%;
+                                        display:inline-block;}
+                                    </style>
+                                    <div class="invoice_details">
+                                        <span>
+                                            <strong>D/O No.</strong>
+                                        </span>
+                                        <strong>
+                                            :
+                                            <span style="font-size:12px;" t-field="o.name"/>
+                                        </strong>
+                                    </div>
+                                    <div class="invoice_details">
+                                        <span>
+                                            <strong>D/O Date</strong>
+                                        </span>
+                                        :
+                                        <span t-field="o.date" t-field-options='{"format": "d MMMM y"}'/>
+                                    </div>
+                                    <div class="invoice_details">
+                                        <span>
+                                            <strong>Your P/O No.</strong>
+                                        </span>
+                                        :
+                                        <span t-field="o.origin"/>
+                                    </div>
+                                    <div class="invoice_details">
+                                        <span>
+                                            <strong>Shipping Terms.</strong>
+                                        </span>
+                                        :
+                                        <span t-field="o.sale_id.shipment_term1.name"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4" style="font-size:10px;margin-top:10px;">
+                                    <div>
+                                        <strong>
+                                            <span>Working Hours :</span>
+                                        </strong>
+                                    </div>
+                                    <span>08:00hrs to 17:30hrs. (Monday to Friday)</span>
+                                    <br/>
+                                    <span>08:00hrs to 12:30hrs. (Saturday)</span>
+                                    <br/>
+                                    <span>Lunch 12:00hrs to 13:00hrs.</span>
+
+                                </div>
+                            </div>
+                            <style>
+                                .invoice_tbody tr:last-child{
+                                border-bottom:1px solid #000;
+                                }
+                                tr&gt;th{
+                                border:1px solid #000000 !important;
+                                }
+                                .noBorder {
+                                border-left: none !important;
+                                border-right: none !important;
+                                border: 1px solid #fff !important;
+                                border-bottom: 1px solid #fff !important;
+                                }
+                            </style>
+                            <table border="1" class="table1 table-condensed"
+                                   style="font-size:12px; width:100%; margin-top: 10px; table-layout: fixed;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width:15%; border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">Part No.</th>
+                                        <th class="text-center" style="width:23%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">Product Description</th>
+                                        <th class="text-center" style="width:10%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">HS Code</th>
+                                        <th class="text-center" style="width:10%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">Country of Origin</th>
+                                        <th class="text-center" style="width:8%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">Batch</th>
+                                        <th class="text-center" style="width:10%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">Quantity</th>
+                                        <th class="text-center" style="width:8%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">Unit</th>
+                                        <th class="text-center" style="width:8%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">Net Weight</th>
+                                        <th class="text-center" style="width:8%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">Gross Weight</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <t t-set="i" t-value="1"/>
+                                    <tr t-foreach="o.move_lines" t-as="l">
+                                        <td style="width:15%; font-size: 12px; border-left:1px solid black; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.product_id.product_no"/>>
+                                        </td>
+                                        <td style="width:23%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.name"/>
+                                            <br/>
+                                            <span>Customer P/N: </span>
+                                            <span t-esc="l.get_pn_code_move(l.id)" />
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.product_id.hs_code"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.product_id.country_of_origin"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.lot_ids.name"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.product_uom_qty"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.product_uos_qty"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.product_id.weight"/>
+                                        </td>
+                                        <td class="text-center"
+                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            <span t-field="l.product_id.weight_net"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table"
+                                   style="font-size:12px; width:100%; height: 50px; border: none !important; margin-bottom: 0px !important;">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid black;">
+                                        <th class="noBorder" style="font-size:13px;">for INTERFLUX SINGAPORE PTE LTD
+                                        </th>
+                                        <th class="text-center noBorder">Total Packaging</th>
+                                        <th class="text-center noBorder">Total Net Weight KG</th>
+                                        <th class="text-center noBorder">Total Gross Weight KG</th>
+                                        <th class="noBorder"
+                                            style="right:-20px; position: relative;font-size:10px; text-align: left;">Goods sold are
+                                            non-returnable.<br/>Goods checked &amp; received in good order.
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td>
+                                        <div style="height:1px;width:90%;background:#000;margin-top:30px; "/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="o.total_packaging"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="o.do_net_weight_total"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="o.do_weight_total"/>
+                                    </td>
+                                    <td>
+                                        <div style="right:-40px; position: relative;height:1px;width:90%;background:#000;margin-top:30px;"/>
+                                    </td>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tbody>
+                                    <div class="row">
+                                        <div class="col-xs-7" style="text-align:left; font-size:10px;">
+                                            <span>Goods sold are non-returnable.</span>
+                                            <span>Goods checked &amp; received in good order.</span>
+                                        </div>
+                                        <div class="col-xs-1" style="text-align:left; font-size:11px;"/>
+                                        <div class="col-xs-4" style="text-align:right; font-size:11px;">
+                                            Customer's Stamp and Signature
+                                        </div>
+                                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer">
+                            <div class="row">
+                                <div class="text-center">
+                                    <ul class="list-inline">
+                                        <li>Page</li>
+                                        <li>
+                                            <span class="page"/>
+                                        </li>
+                                        <li>of</li>
+                                        <li>
+                                            <span class="topage"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</openerp>

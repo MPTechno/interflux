@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="interflux_layouts.report_sale_quotation">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'interflux_layouts.report_saleorder_document')"/>
+                </t>
+            </t>
+        </template>
+        <template id="interflux_layouts.report_saleorder_document">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-12" style="align: center;">
+                        <img t-if="o.company_id.invoice_header"
+                             t-att-src="'data:image/png;base64,%s' % o.company_id.invoice_header"
+                             style="max-height: 100px; magin-top:80px; margin-right:30px; weight: 100%;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="page">
+                <div class="row">
+                    <div class="col-xs-8" style="text-align: left; font-size:13px;">
+                        <strong>To: </strong>
+                        <span t-field="o.partner_id.customer_id"/>
+                        <br/><br/>
+                        <div t-field="o.partner_invoice_id"
+                             t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true}"/>
+
+                        <p t-if="o.partner_id.vat">VAT:
+                            <span t-field="o.partner_id.vat"/>
+                        </p>
+                        <div t-if="o.partner_shipping_id != o.partner_invoice_id" class="mt8">
+                            <strong>Shipping address:</strong>
+                            <div t-field="o.partner_shipping_id"
+                                 t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true}"/>
+                            <p t-if="o.partner_id.vat">VAT:
+                                <span t-field="o.partner_id.vat"/>
+                            </p>
+                        </div>
+                        <br/>
+                        <strong>Attention: </strong>
+                        <span t-field="o.attention_id"/>
+                        <br/>
+                        <strong>Tel No: </strong>
+                        <span t-field="o.telno"/>
+                        <br/>
+                        <strong>Fax No: </strong>
+                        <span t-field="o.faxno"/>
+                        <br/>
+
+                    </div>
+                    <div class="col-xs-4" style="font-size:13px;">
+                        <h3>
+                            <strong>Quotation</strong>
+                        </h3>
+                        <div>
+                            <span style="text-align:right;">Quotation Ref:</span>
+                            <span style="text-align:left;" t-field="o.client_order_ref"/>
+                        </div>
+                        <div>
+                            <span style="text-align:right;">Date:</span>
+                            <span style="text-align:left" t-field="o.date_order"  t-field-options='{"format": "d MMMM y"}'/>
+                        </div>
+                        <div>
+                            <span style="text-align:right;">Quoted By:</span>
+                            <span style="text-align:left;" t-field="o.user_id.name"/>
+                        </div>
+                        <div>
+                            <span style="text-align:right;">Mobile No:</span>
+                            <span style="text-align:left;" t-field="o.user_id.partner_id.mobile"/>
+                        </div>
+                        <div>
+                            <span style="text-align:right;">Email:</span>
+                            <span style="text-align:left;" t-field="o.user_id.email"/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <style>
+                    .invoice_tbody tr:last-child{
+                    border-bottom:1px solid #000;
+                    }
+                    tr&gt;th{
+                    border:1px solid #000000 !important;
+                    }
+                    .noBorder {
+                    border-left: none !important;
+                    border-right: none !important;
+                    border: 1px solid #fff !important;
+                    border-bottom: 1px solid #fff !important;
+                    }
+                </style>
+                <table border="1pt solid black" class="table1 table-condensed"
+                       style="table-layout: fixed; page-break-inside:auto; width:100%; border:1px solid black;">
+                    <thead>
+                        <!--<tr>
+                            <th class="text-center"
+                                style="width:15%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Part No.
+                            </th>
+                            <th class="text-center"
+                                style="width:30%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Descriptions
+                            </th>
+                            <th class="text-center"
+                                style="width:15%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Shipment Terms
+                            </th>
+                            <th class="text-center"
+                                style="width:12%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Min Order Qty
+                            </th>
+                            <th class="text-center"
+                                style="width:14%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Unit Price
+                            </th>
+                            <th class="text-center"
+                                style="width:14%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Total
+                            </th>
+                        </tr>-->
+
+                        <tr>
+                            <th class="text-center"
+                                style="width:15%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Part No.
+                            </th>
+                            <th class="text-center"
+                                style="width:30%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Descriptions
+                            </th>
+                            <th class="text-center"
+                                style="width:15%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Shipment Terms
+                            </th>
+                            <th class="text-center"
+                                style="width:12%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Min Order Qty
+                            </th>
+                            <th class="text-center"
+                                style="width:14%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Unit Price
+                            </th>
+                            <th class="text-center"
+                                style="width:14%;border-right:1px solid black;font-size: 13px;vertical-align:middle;border-bottom:1px solid black;">
+                                Total
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+                        <!--<tr t-foreach="o.order_line" t-as="l">
+                            <td class="text-center"
+                                style="width:15%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                <span t-field="l.product_id.default_code"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:30%;border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                <span t-field="l.name"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:15%;border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                <span t-field="l.product_id.country_of_origin"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:12%;border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                <span t-field="l.product_uom_qty"/>
+                                <span groups="product.group_uom" t-field="l.product_uom"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:14%;border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                <span t-field="l.price_unit"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:14%;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                <span t-field="l.price_subtotal"
+                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
+                            </td>
+                        </tr>-->
+                        <tr t-foreach="o.order_line" t-as="l">
+                            <td class="text-center"
+                                style="width:15%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                <span t-field="l.product_id.product_no"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:30%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black; text-align: left">
+                                <span t-field="l.product_id.description"/>
+                                <br/>
+                                <br/>
+                                <span>Customer P/N: </span>
+                                <span t-esc="l.get_pn_code(l.id)" />
+                            </td>
+                            <td class="text-center"
+                                style="width:15%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                <span t-field="o.shipment_term1"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:12%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                <span t-field="l.product_uom_qty"/>
+                                <span groups="product.group_uom" t-field="l.product_uom"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:14%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                <span t-field="l.price_unit"/>
+                            </td>
+                            <td class="text-center"
+                                style="width:14%;vertical-align:center;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                <span t-field="l.price_subtotal"
+                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <div class="row">
+                    <div class="col-xs-4 pull-left">
+                        <table class="table1 table-condensed" column="6" style="width:100%;">
+                            <tr style="text-align: left;">
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span>
+                                        <strong>Payment Term:</strong>
+                                    </span>
+                                </td>
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span t-field="o.payment_term"/>
+                                </td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span>
+                                        <strong></strong>
+                                    </span>
+                                </td>
+                                <td colspan="2" style="font-size: 12px;">
+
+                                </td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span>
+                                        <strong></strong>
+                                    </span>
+                                </td>
+                                <td colspan="2" style="font-size: 12px;">
+
+                                </td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span>
+                                        <strong>Validity Date:</strong>
+                                    </span>
+                                </td>
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span t-field="o.validity_date"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-xs-4 pull-left"></div>
+
+                    <div class="col-xs-4 pull-right">
+                        <table class="table1 table-condensed" column="6" style="width:100%;">
+                            <tr style="text-align: right;">
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span>
+                                        <strong>Sub Total:</strong>
+                                    </span>
+                                </td>
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span t-field="o.amount_untaxed"/>
+                                </td>
+                            </tr>
+
+                            <tr style="text-align: right;">
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span>
+                                        <strong>+ 7% GST:</strong>
+                                    </span>
+                                </td>
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span t-field="o.amount_tax"/>
+                                </td>
+                            </tr>
+
+                            <tr style="text-align: right;">
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span>
+                                        <strong>Total Amount:</strong>
+                                    </span>
+                                </td>
+                                <td colspan="2" style="font-size: 12px;">
+                                    <span t-field="o.amount_total"/>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-10"
+                         style="align: left; text-align:left; font-size:12px !important;font-weight:300px;">
+                        <span>
+                            <strong>
+                                Notice to buyer/buyer's bank: "All Bank charges inside/outside Singapore is on
+                                buyer's
+                                a/c:. Otherwise a SGD30/EUR30/USD30 bank reimbursement charge is payable to us for
+                                each
+                                TT transaction.
+                            </strong>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="row">
+                    <div class="col-xs-4 pull-left"
+                         style="align: left; text-align:left; font-size:12px !important;">
+                        <span>Prepared By:</span>
+                        <span t-field="user.name"/>
+                    </div>
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-5 pull-right"
+                         style="align: right; text-align:right; font-size:12px !important;">
+                        <span style="font-size:14px;">
+                            <strong>for INTERFLUX SINGAPORE PTE LTD</strong>
+                        </span>
+                        <br/>
+                        <span>This quotation is computer generated.</span>
+                        <br/>
+                        <span>No signature is required.</span>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div t-if="o.state in ['draft','sent']" class="col-xs-12">
+                        <img t-if="o.company_id.quotation_footer"
+                             t-att-src="'data:image/png;base64,%s' % o.company_id.quotation_footer"
+                             style="margin-top: 5px;width: 90%;"/>
+                    </div>
+                </div>-->
+                <div class="text-center">
+                    <ul class="list-inline">
+                        <li>Page:</li>
+                        <li>
+                            <span class="page"/>
+                        </li>
+                        <li>of</li>
+                        <li>
+                            <span class="topage"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </template>
+    </data>
+</openerp>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_interflux_layouts_interflux_layouts,interflux_layouts.interflux_layouts,model_interflux_layouts_interflux_layouts,,1,0,0,0
