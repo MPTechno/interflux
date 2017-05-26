@@ -1,0 +1,105 @@
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Odoo 8 : Sales Invoice Discount</h2>
+            <h3 class="oe_slogan">This module is used to Discount Amount in Sales and Invoice.</h3>
+            <h4 class="oe_slogan">How to use</h4>
+            <div class="oe_screenshot" style="text-align: left;">
+               <ul>
+                       <li style="color:#30054D;">Discount on sale order lines: While creating sale order you can apply fixed Discount or Discount in precentage on sales price by selecting Discount method.  </li>
+               </ul>
+                   <img src="so_sol_fixed.png"><br /><br />
+               <ul>
+                       <li style="color:#30054D;">Apply Discount in percentage on individual product</li>
+               </ul>
+                   <img src="so_sol_perc.png"><br /><br />
+               
+               <ul>
+                       <li style="color:#30054D;">Applying Discount on whole sale order:same as sale order lines you can apply Discount on total amount of sales either a fixed amount or in precentage.</li>
+               </ul>
+                   <img src="so_fixed.png"><br /><br />
+                   
+                   <img src="so_percentage.png"><br /><br />
+
+                <ul>
+                       <li style="color:#30054D;">After applying the discount on sale order line and sale order , Total discount will be applied.</li>
+               </ul> 
+                    <img src="so_total.png"><br /><br />             
+               <ul>
+                       <li style="color:#30054D;">Discount on invoices:same as sale order lines you can apply Discount on individual products of invoice or on whole invoice amount.</li>
+               </ul>
+                    <img src="inv_invline.png"><br /><br />
+                    
+               <ul>
+                       <li style="color:#30054D;">Discount on Whole Invoice.</li>
+               </ul>
+                   <img src="inv_whole.png"><br /><br />
+               
+               <ul>
+                       <li style="color:#30054D;">Total Discount on Invoice.</li>
+               </ul>
+                   <img src="inv_total.png"><br /><br />
+                   
+               <ul>
+                       <li style="color:#30054D;">Discount checkbox is checked for report in sale order.</li>
+               </ul>
+                   <img src="so_checked.png"><br /><br />
+                   
+               <ul>
+                       <li style="color:#30054D;">Discount visible on report in sale order.</li>
+               </ul>
+                   <img src="so_report_vis.png" WIDTH="925" HEIGHT="607"><br /><br />
+                
+               <ul>
+                       <li style="color:#30054D;">Discount checkbox is unchecked for report in sale order.</li>
+               </ul>
+                   <img src="so_unchecked.png"><br /><br />
+                   
+               <ul>
+                       <li style="color:#30054D;">Discount is invisible on report in sale order.</li>
+               </ul>
+                   <img src="so_report_invis.png" WIDTH="925" HEIGHT="607"><br /><br />
+                   
+                <ul>
+                        <li style="color:#30054D;">Discount checkbox is checked for report in Invoice.</li>
+                </ul>
+                   <img src="inv_checked.png"><br /><br />
+               
+               <ul>
+                       <li style="color:#30054D;">Discount visible on report in invoice.</li>
+               </ul>
+                   <img src="inv_report_vis.png" WIDTH="925" HEIGHT="607"><br /><br />
+
+               <ul>
+                        <li style="color:#30054D;">Discount checkbox is unchecked for report in Invoice.</li>
+                </ul>
+                   <img src="inv_unchecked..png"><br /><br />
+               
+               <ul>
+                       <li style="color:#30054D;">Discount is invisible on report in invoice.</li>
+               </ul>
+                   <img src="inv_report_invis.png" WIDTH="925" HEIGHT="607"><br /><br />                   
+                   
+            </div>
+        </div>
+    </div>
+</section>
+<br/>
+<section class="oe_container oe_dark">
+    <div class="oe_row ">
+        <div class="oe_slogan text-center">
+            <a href="http://www.browseinfo.in" target="_blank">
+                <img src="bi_logo.png"/>
+            </a>
+            <br/>
+            <div class="oe_span12">
+            <h2 class="text-center"><a>About us</a></h2>
+        </div>
+            <span>
+                <a style="color: #a24689 !important;" href="http://www.browseinfo.in" target="_blank">Website</a> | 
+                <a style="color: #a24689 !important;" href="http://www.blog.browseinfo.in" target="new">Blog</a> | 
+                <a style="color: #a24689 !important;" href="mailto:contact@browseinfo.in">Write us</a>
+            </span>
+        </div>
+    </div>
+</section>

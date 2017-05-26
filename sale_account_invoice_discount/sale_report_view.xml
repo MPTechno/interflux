@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report 
+            id="report_sale_custom"
+            string="Quotation / Order"
+            model="sale.order" 
+            report_type="qweb-pdf"
+            file="sale_account_invoice_discount.report_saleorder_visible" 
+            name="sale_account_invoice_discount.report_saleorder_visible" 
+        />
+        
+        <report 
+            id="report_invoice_custom"
+            string="Invoices"
+            model="account.invoice" 
+            report_type="qweb-pdf"
+            file="sale_account_invoice_discount.report_invoice_visible" 
+            name="sale_account_invoice_discount.report_invoice_visible" 
+        />
+    </data>
+</openerp>
+
+
+
