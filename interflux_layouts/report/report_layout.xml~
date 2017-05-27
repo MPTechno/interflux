@@ -383,7 +383,7 @@
 
         <!--Customer Invoice Report-->
         <record id="interflux_layouts.interflux_supplier_invoice" model="ir.actions.report.xml">
-            <field name="paperformat_id" ref="interflux_layout_paper"/>
+            <field name="paperformat_id" ref="interflux_layout_purchase_order_paper"/>
         </record>
 
 		<!--Invoices-->
