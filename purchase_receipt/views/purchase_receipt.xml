@@ -5,7 +5,7 @@
             <field name="model">account.voucher</field>
             <field name="inherit_id" ref="account_voucher.view_purchase_receipt_form"/>
             <field name="arch" type="xml">
-				<xpath expr="//notebook/page/field[@name='line_dr_ids']/tree/field[@name='account_id']" position="after">
+				<xpath expr="//notebook/page/field[@name='line_dr_ids']/tree/field[@name='name']" position="after">
 					<field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
 				</xpath>
             </field>
