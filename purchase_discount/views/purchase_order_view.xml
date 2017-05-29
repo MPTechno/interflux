@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_purchase_order_discount_form_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.discount.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                    <field name="discount_method"/>
+                    <field name="discount"/>
+                </xpath>
+                <xpath expr="//field[@name='notes']" position="before">
+                    <group>
+                        <group>
+                            <field name="discount_method"/>
+                            <field name="discount"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_purchase_order_discount_form_inherit1" model="ir.ui.view">
+            <field name="name">purchase.order.discount.form.inherit1</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="weight_calculation.purchase_order_weight_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_untaxed']" position="after">
+                </xpath>
+                <field name="amount_untaxed" position="after">
+                    <field name="discount_amt" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
