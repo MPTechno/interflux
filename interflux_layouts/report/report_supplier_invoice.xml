@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <report
+        <!--report
             id="interflux_supplier_invoice"
             model="account.invoice"
             string="Customer/Supplier Invoice"
@@ -11,7 +11,7 @@
             attachment_use="True"
             attachment="(object.state in ('open','paid')) and
                 ('INV'+(object.number or '').replace('/','')+'.pdf')"
-        />
+        /-->
 
         <template id="report_supplier_invoice">
             <t t-call="report.html_container">
