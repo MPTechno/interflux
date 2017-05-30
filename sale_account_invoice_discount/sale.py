@@ -35,7 +35,7 @@ class sale_order(osv.osv):
     def _amount_line_tax(self, cr, uid, line, context=None):
         val = 0.0
         line_obj = self.pool['sale.order.line']
-        price = line.price_unit
+        price = line.price_unit - line.discount
         #if line.discount_method == 'fix':
         #    price = price - line.discount
         #elif line.discount_method == 'per':
