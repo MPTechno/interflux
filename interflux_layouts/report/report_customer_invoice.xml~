@@ -134,7 +134,7 @@
                                     <tr t-foreach="o.invoice_line" t-as="l">
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"></td>
                                          <td style="font-size: 12px;  width:28%;text-align:center;border: 1px solid black"><span t-field="l.name"/></td>
-                                         <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="l.product_id.default_code"/></td>
+                                         <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="l.product_id.hs_code"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="l.product_id.country_of_origin"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"> </td>
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="l.quantity"/></td>
