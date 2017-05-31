@@ -8,7 +8,11 @@
 				<xpath expr="//notebook/page/field[@name='line_dr_ids']/tree/field[@name='name']" position="after">
 					<field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
 				</xpath>
-            </field>
+				<!--<xpath expr="//field[@name='tax_amount']" position="replace">-->
+					<!--<field name="total_amount_tax" nolabel="1"/>-->
+				<!--</xpath>-->
+			</field>
 		</record>
+
 	</data>
 </openerp>
