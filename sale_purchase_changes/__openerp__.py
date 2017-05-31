@@ -10,10 +10,11 @@
     'author': 'HashMicro / Bharat Chauhan',
     'website': 'www.hashmicro.com',
     'category': 'Sale / Purchase',
-    'depends': ['sale', 'purchase'],
+    'depends': ['sale', 'purchase', 'stock'],
     'data': [
         'views/purchase_view.xml',
         'views/sale_view.xml',
+        'views/stock_inventory_view.xml',
     ],
     'installable': True,
 }
