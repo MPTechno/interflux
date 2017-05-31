@@ -34,6 +34,7 @@ class account_voucher(osv.osv):
             if line.get('amount',False) and line.get('taxes_id', False):
                 if line.get('taxes_id', []) != []:
                     taxes =  line.get('taxes_id')
+                    tax_ids = []
                     if isinstance(taxes[0], tuple):
                         if taxes[0][0] == 6:
                             tax_ids = taxes[0][2]
