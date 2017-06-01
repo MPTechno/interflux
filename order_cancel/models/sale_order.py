@@ -6,8 +6,19 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     def action_sale_cancel(self, cr, uid, ids, context=None):
-        self.write(cr, uid, ids, {'state': 'cancel'}, context=context)
+        picking_obj = self.pool.get('stock.picking')
+        picking_type_obj = self.pool.get('stock.picking.type')
+        self.write(cr, uid, ids, {
+            'state': 'cancel'
+        }, context=context)
         for order in self.browse(cr, uid, ids, context=context):
+            for picking in order.picking_ids:
+                picking_type_ids = picking_type_obj.search(cr, uid, [('name', '=', 'Receipts')], limit=1)
+                for picking_type_id in picking_type_ids:
+                    new_picking = picking_obj.copy(cr, uid, picking.id, default={
+                        'picking_type_id': picking_type_id,
+                        'state': 'confirmed',
+                    }, context=context)
             order_id = self.copy(cr, uid, order.id, context=context)
             ## TODO: Create incomming shipment
 
