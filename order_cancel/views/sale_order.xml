@@ -1,0 +1,14 @@
+<openerp>
+    <data>
+        <record id="view_purchase_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+				<xpath expr="//button[@name='action_cancel']" position="before">
+                    <button name="action_sale_cancel" type="object" string="Cancel Sale Order" states="sent,progress,manual,shipping_except,invoice_except"/>
+                </xpath>
+            </field>
+		</record>
+    </data>
+</openerp>
