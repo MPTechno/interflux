@@ -17,8 +17,8 @@
                                 </tr>
                                 <tr>
                                     <th style="font-size: 9px;  width:40%;text-align:left;margin-top:20px"><strong>Bank Details:</strong></th>
-                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Invoice No.</th>
-                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;">: <span t-field="o.number"/></td>
+                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Invoice No.: <span t-field="o.number"/></th>
+                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;"></td>
                                     <th style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;"><span t-field="o.partner_id.name"></span></th>
                                 </tr>
                                 <tr>
@@ -28,8 +28,8 @@
                                             <span t-field="bank.bank_name"></span>
                                         </span-->
                                     </td>
-                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Invoice Date</th>
-                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;">: <span t-field="o.date_invoice"/></td>
+                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Invoice Date: <span t-field="o.date_invoice"/></th>
+                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;"></td>
                                     <th style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;"></th>
                                 </tr>
                                 <tr>
@@ -48,15 +48,19 @@
                                         <span t-field="bank.street"></span>
                                     </span-->
                                     </td>
-                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Your P/O No.</th>
-                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;">:</td>
-                                    <th style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;">Bill To:</th>
+                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Delivery Order No.: <span t-esc="o.get_delivery_order_number(o)"/></th>
+                                    <!--th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Your P/O No.:</th-->
+                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;"></td>
+                                    <th style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;"></th>
+                                    <!--th style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;">Bill To:</th-->
                                 </tr>
                                 <tr>
                                     <td style="font-size: 9px;  width:40%;text-align:left;margin-top:20px"></td>
-                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Shipping Terms</th>
-                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;">: <span t-field="o.invoice_incoterm"/></td>
-                                    <th style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;"><span t-field="o.partner_id.name"/></th>
+                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Your P/O No.: <span t-esc="o.get_your_po_number(o)"/></th>
+
+                                    <!--th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Shipping Terms: <span t-field="o.invoice_incoterm"/></th-->
+                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;"></td>
+                                    <th style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;">Bill To:<br/><span t-field="o.partner_id.name"/></th>
                                 </tr>
                                 <tr>
                                     <td style="font-size: 9px;  width:40%;text-align:left;margin-top:20px"><strong>Bank Brach:</strong>
@@ -67,8 +71,9 @@
 	                                        <span t-field="bank.bank_branch"></span>
 	                                    </span-->
                                     </td>
-                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Exchange rate.</th>
-                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;">: <span t-field="o.exchange_rate"/></td>
+                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Shipping Terms: <span t-field="o.invoice_incoterm"/></th>
+                                    <!--th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Exchange rate.: <span t-field="o.exchange_rate"/></th-->
+                                    <td style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;"></td>
                                     <td style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;"><span t-field="o.partner_id.street"/></td>
                                 </tr>
                                 <tr>
@@ -80,8 +85,9 @@
 		                                    <span t-field="bank.bank_bic"></span>
 		                                </span-->
                                     </td>
+                                    <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px">Exchange rate.: <span t-field="o.exchange_rate"/></th>
                                     <th style="font-size: 9px;  width:12%;text-align:left;margin-top:20px"></th>
-                                    <th style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;"></th>
+                                    <!--th style="font-size: 9px;  width:18%;text-align:left;margin-top:20px;"></th-->
                                     <td style="font-size: 9px;  width:30%;text-align:left;margin-top:20px;"><span t-field="o.partner_id.street2"/></td>
                                 </tr>
                                 <tr>
@@ -136,7 +142,7 @@
                                          <td style="font-size: 12px;  width:28%;text-align:center;border: 1px solid black"><span t-field="l.name"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="l.product_id.hs_code"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="l.product_id.country_of_origin"/></td>
-                                         <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"> </td>
+                                         <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-esc="o.get_batch_number(o,l.product_id)"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="l.quantity"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="l.uos_id"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black"><span t-field="o.in_net_weight_total"/></td>
@@ -145,30 +151,34 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <table  style="width:100%;margin-top:20px;">
+                            <table style="width:100%; border:1px solid black; margin-top:-21px;">
                                 <thead style=" ">
                                     <tr>
-                                        <th style="font-size: 12px;  width:36%;text-align:center;">for INTERFLUX SINGAPORE PTE LTD</th>
-                                        <th style="font-size: 12px;  width:8%;text-align:center;">Total Packaging</th>
-                                        <th style="font-size: 12px;  width:16%;text-align:center;padding-left:5px; padding-right:5px">Total Net Weight KG</th>
-                                        <th style="font-size: 12px;  width:16%;text-align:center;padding-left:3px; padding-right:3px">Total Gross Weight KG</th>
-                                        <th style="font-size: 12px;  width:8%;text-align:center;padding-left:5px; padding-right:5px">Sub Total</th>
-                                        <th style="font-size: 12px;  width:8%;text-align:center;padding-left:3px; padding-right:3px">7% GST</th>
-                                        <th style="font-size: 12px;  width:8%;text-align:center;">Total Amount</th>
+                                        <th style="font-size: 12px;  width:25%;"><span style="margin-left:10px;">for INTERFLUX SINGAPORE PTE LTD</span></th>
+                                        <th style="font-size: 12px;  width:11%;text-align:center;">Total Packaging</th>
+                                        <th style="font-size: 12px;  width:11%;text-align:center;padding-left:5px; padding-right:5px">Total Net Weight KG</th>
+                                        <th style="font-size: 12px;  width:11%;padding-left:3px; padding-right:3px">Total Gross Weight KG <span style="color:white;">.........................:</span></th>
+                                        <th style="font-size: 12px;  width:19%;text-align:center;padding-left:5px; padding-right:5px">Sub Total</th>
+                                        <th style="font-size: 12px;  width:11%;text-align:center;padding-left:3px; padding-right:3px">7% GST</th>
+                                        <th style="font-size: 12px;  width:9%;text-align:center;">Total Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody style=" ">
-                                    <tr>
-                                        <td style="font-size: 12px;  width:36%;text-align:center;"></td>
-                                        <td style="font-size: 12px;  width:8%;text-align:center;"><span t-field="o.total_packaging"/></td>
-                                        <td style="font-size: 12px;  width:16%;text-align:center;"><span t-field="o.in_net_weight_total"/></td>
-                                        <td style="font-size: 12px;  width:16%;text-align:center;"><span t-field="o.in_weight_total"/></td>
-                                        <td style="font-size: 12px;  width:8%;text-align:center;"><span t-field="o.amount_untaxed"/></td>
-                                        <td style="font-size: 12px;  width:8%;text-align:center;"><span t-field="o.amount_tax"/></td>
-                                        <td style="font-size: 12px;  width:8%;text-align:center;"><span t-field="o.amount_total"/></td>
+                                    <tr style="line-height:30px;">
+                                        <td style="font-size: 12px;  width:25%;"><u><span style="margin-left:10px; color:white;">for INTERFLUX SINGAPORE PTE LTD</span></u></td>
+                                        <td style="font-size: 12px;  width:11%;text-align:center;"><span t-field="o.total_packaging"/></td>
+                                        <td style="font-size: 12px;  width:11%;text-align:center;"><span t-field="o.in_net_weight_total"/></td>
+                                        <td style="font-size: 12px;  width:11%;text-align:center;"><span t-field="o.in_weight_total"/></td>
+                                        <td style="font-size: 12px;  width:19%;text-align:center;"><span t-field="o.amount_untaxed"/></td>
+                                        <td style="font-size: 12px;  width:11%;text-align:center;"><span t-field="o.amount_tax"/></td>
+                                        <td style="font-size: 12px;  width:9%;text-align:center;"><span t-field="o.amount_total"/></td>
                                     </tr>
                                 </tbody>
                             </table>
+                        <br/>
+                        <p style="font-size: 10px;">All Cheques payment should be made and crossed to <b>"Interflux Singapore Pte Ltd."</b><br/>
+				        For remittance payment: All Bank charges inside &amp; outside Singapore should be borne by buyer. Otherwise a SGD30/Eur30/USD30 bank reimbursement is charged for each TT transation.<br/>
+				        Interest at 1.5% per month will be levied on overdue account from credit terms.</p>
                         </div>
                     </t>
                 </xpath>
