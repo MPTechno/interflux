@@ -150,5 +150,25 @@ class sale_order(osv.osv):
     	res['value']['faxno'] = part.fax
     	return res
     	
-    
 
+class StockPicking(models.Model):
+
+    _inherit = 'stock.picking'
+
+    def get_so_ref(self, origin):
+        sale_order = self.env['sale.order'].search([('name', '=', origin)])
+        if sale_order and sale_order[0].client_order_ref:
+            return sale_order[0].client_order_ref
+
+    def get_lot_number(self, product_id, pack_operation_ids):
+        lot_number = ""
+        for pack_operation_id in pack_operation_ids:
+            if pack_operation_id.product_id.id == product_id.id:
+                if pack_operation_id.lot_id.name:
+                    lot_number = pack_operation_id.lot_id.name
+        return lot_number
+
+    def get_po_number(self, origin):
+        sale_order = self.env['sale.order'].search([('name', '=', origin)])
+        if sale_order and sale_order[0].client_order_ref:
+            return sale_order[0].your_po_no

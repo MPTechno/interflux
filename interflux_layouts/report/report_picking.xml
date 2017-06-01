@@ -11,7 +11,9 @@
                                 <div class="col-xs-4"></div>
                                 <div class="col-xs-4" style="align: center;">
                                     <h3>
-                                        <strong><span>Delivery Order</span></strong>
+                                        <strong>
+                                            <span>Delivery Order</span>
+                                        </strong>
                                     </h3>
                                 </div>
                                 <div class="col-xs-4"></div>
@@ -52,6 +54,7 @@
                                             <span t-field="o.partner_id.vat"/>
                                         </p>
                                     </div>
+                                    <br/>
                                     Attn :
                                     <span t-field="o.attn"/>
                                     <br/>
@@ -72,7 +75,7 @@
                                         </span>
                                         <strong>
                                             :
-                                            <span style="font-size:12px;" t-field="o.name"/>
+                                            <span style="font-size:12px;" t-esc="o.get_so_ref(o.origin)"/>
                                         </strong>
                                     </div>
                                     <div class="invoice_details">
@@ -87,7 +90,7 @@
                                             <strong>Your P/O No.</strong>
                                         </span>
                                         :
-                                        <span t-field="o.origin"/>
+                                        <span t-esc="o.get_po_number(o.origin)"/>
                                     </div>
                                     <div class="invoice_details">
                                         <span>
@@ -97,7 +100,7 @@
                                         <span t-field="o.sale_id.shipment_term1.name"/>
                                     </div>
                                 </div>
-                                <div class="col-xs-4" style="font-size:10px;margin-top:10px;">
+                                <!-- <div class="col-xs-4" style="font-size:10px;margin-top:10px;">
                                     <div>
                                         <strong>
                                             <span>Working Hours :</span>
@@ -109,7 +112,7 @@
                                     <br/>
                                     <span>Lunch 12:00hrs to 13:00hrs.</span>
 
-                                </div>
+                                </div> -->
                             </div>
                             <style>
                                 .invoice_tbody tr:last-child{
@@ -143,59 +146,60 @@
                                 <tbody class="invoice_tbody">
                                     <t t-set="i" t-value="1"/>
                                     <tr t-foreach="o.move_lines" t-as="l">
-                                        <td style="width:15%; font-size: 12px; border-left:1px solid black; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
-                                            <span t-field="l.product_id.product_no"/>>
+                                        <td style="width:15%; font-size: 12px; border-left:1px solid black; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
+                                            <span t-field="l.product_id.product_tmpl_id.default_code"/>
                                         </td>
-                                        <td style="width:23%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                        <td style="width:23%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
                                             <span t-field="l.name"/>
                                             <br/>
                                             <span>Customer P/N: </span>
                                             <span t-esc="l.get_pn_code_move(l.id)" />
                                         </td>
                                         <td class="text-center"
-                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
                                             <span t-field="l.product_id.hs_code"/>
                                         </td>
                                         <td class="text-center"
-                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
                                             <span t-field="l.product_id.country_of_origin"/>
                                         </td>
                                         <td class="text-center"
-                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
-                                            <span t-field="l.lot_ids.name"/>
+                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
+                                            <t t-if="o.pack_operation_ids">
+                                                <span t-esc="o.get_lot_number(l.product_id, o.pack_operation_ids)"/>
+                                            </t>
                                         </td>
                                         <td class="text-center"
-                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            style="width:10%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
                                             <span t-field="l.product_uom_qty"/>
                                         </td>
                                         <td class="text-center"
-                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
                                             <span t-field="l.product_uos_qty"/>
                                         </td>
                                         <td class="text-center"
-                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
                                             <span t-field="l.product_id.weight"/>
                                         </td>
                                         <td class="text-center"
-                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  border-bottom:0.5px solid black;">
+                                            style="width:8%; font-size: 12px; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em;  ">
                                             <span t-field="l.product_id.weight_net"/>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <table class="table"
-                                   style="font-size:12px; width:100%; height: 50px; border: none !important; margin-bottom: 0px !important;">
+                            <table style="font-size:12px; width:100%; height: 50px; border-left: 1px solid !important; border-bottom: 1px solid !important; border-right: 1px solid !important; margin-bottom: 0px !important;">
                                 <thead>
-                                    <tr style="border-bottom: 1px solid black;">
-                                        <th class="noBorder" style="font-size:13px;">for INTERFLUX SINGAPORE PTE LTD
-                                        </th>
-                                        <th class="text-center noBorder">Total Packaging</th>
-                                        <th class="text-center noBorder">Total Net Weight KG</th>
-                                        <th class="text-center noBorder">Total Gross Weight KG</th>
-                                        <th class="noBorder"
-                                            style="right:-20px; position: relative;font-size:10px; text-align: left;">Goods sold are
-                                            non-returnable.<br/>Goods checked &amp; received in good order.
-                                        </th>
+                                    <tr>
+                                        <td style="font-size:13px;border-right:none !important;"><strong>for INTERFLUX SINGAPORE PTE LTD</strong>
+                                        </td>
+                                        <td class="text-center" style="padding-top:5px;"><strong>Total <br/>Packaging</strong></td>
+                                        <td class="text-center" style="padding-top:5px;"><strong>Total Net Weight <br/>KG</strong></td>
+                                        <td class="text-center " style="padding-top:5px;"><strong>Total Gross Weight<br/> KG</strong></td>
+                                        <td
+                                            style="right:-20px; position: relative;font-size:10px; text-align: left;font-size:12px;"><strong>Goods sold are
+                                            non-returnable.<br/>Goods checked &amp; received in good order.</strong>
+                                        </td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -212,7 +216,7 @@
                                         <span t-field="o.do_weight_total"/>
                                     </td>
                                     <td>
-                                        <div style="right:-40px; position: relative;height:1px;width:90%;background:#000;margin-top:30px;"/>
+                                        <div style="right:-20px; position: relative;height:1px;width:90%;background:#000;margin-top:30px;"/>
                                     </td>
                                 </tbody>
                             </table>
