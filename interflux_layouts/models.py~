@@ -44,7 +44,7 @@ class sale_order(models.Model):
 
     deli_address    = fields.Text('Delivery Address')
     shipment_term1  = fields.Many2one('shipment.term', string='Shipment Term')
-    your_po_no = fields.Char('Po No.')
+
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'

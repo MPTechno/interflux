@@ -28,7 +28,6 @@
                 </xpath>
                 <xpath expr="//field[@name='pricelist_id']" position="after">
                     <field name="shipment_term1" string="Shipment Terms"/>
-                    <field name="your_po_no"/>
                 </xpath>
             </field>
         </record>
