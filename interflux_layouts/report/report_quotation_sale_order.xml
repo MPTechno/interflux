@@ -109,7 +109,7 @@
             </t>
         </template>
 
-        <template id="sale.report_saleorder">
+        <template id="sale.report_saleorder_document">
             <t t-foreach="docs" t-as="o">
                 <xpath expr="//div[@class='page']" position="replace">
                     <t t-call="interflux_layouts.external_picking_layout">
