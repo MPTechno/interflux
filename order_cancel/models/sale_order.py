@@ -5,26 +5,37 @@ from openerp import models, fields, api, _
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    version = fields.Integer(default=0)
+
     def action_sale_cancel(self, cr, uid, ids, context=None):
-        picking_obj = self.pool.get('stock.picking')
+        picking_obj      = self.pool.get('stock.picking')
         picking_type_obj = self.pool.get('stock.picking.type')
-        order_number = self.browse(cr, uid, ids, context)
-        is_canceled = str(order_number.name).find('-')
-        if is_canceled > 0:
-            cancel_number = int(str(order_number.name).split('-')[-1])
-        else:
-            cancel_number = 1
+
         for order in self.browse(cr, uid, ids, context=context):
+            order_name = order.name.split('-')[0]
             for picking in order.picking_ids:
                 picking_type_ids = picking_type_obj.search(cr, uid, [('name', '=', 'Receipts')], limit=1)
                 for picking_type_id in picking_type_ids:
-                    new_picking = picking_obj.copy(cr, uid, picking.id, default={
+                    ## TODO: Create incomming shipment
+                    picking_obj.copy(cr, uid, picking.id, default={
                         'picking_type_id': picking_type_id,
                         'state': 'confirmed',
                     }, context=context)
-            order_id = self.copy(cr, uid, order.id, context=context)
-            self.write(cr, uid, order_id, {'name': '%s-%s' %(order_number.name, str(cancel_number))}, context=context)
-            ## TODO: Create incomming shipment
+
+            new_version = order.version + 1
+            self.write(cr, uid, order.id, {
+                'name': '%s-%s' % (order_name, str(new_version)),
+                'state': 'cancel',
+            }, context=context)
+
+            order_id = self.copy(cr, uid, order.id, default={
+                'name': order_name,
+                'version': new_version,
+            }, context=context)
+            # self.write(cr, uid, order_id, {
+            #     'name': order_name,
+            #     'version': new_version
+            # }, context=context)
 
             return {
                 'name': _("Sale Order"),
