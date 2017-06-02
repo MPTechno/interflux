@@ -8,9 +8,12 @@ class SaleOrder(models.Model):
     def action_sale_cancel(self, cr, uid, ids, context=None):
         picking_obj = self.pool.get('stock.picking')
         picking_type_obj = self.pool.get('stock.picking.type')
-        self.write(cr, uid, ids, {
-            'state': 'cancel'
-        }, context=context)
+        order_number = self.browse(cr, uid, ids, context)
+        is_canceled = str(order_number.name).find('-')
+        if is_canceled > 0:
+            cancel_number = int(str(order_number.name).split('-')[-1])
+        else:
+            cancel_number = 1
         for order in self.browse(cr, uid, ids, context=context):
             for picking in order.picking_ids:
                 picking_type_ids = picking_type_obj.search(cr, uid, [('name', '=', 'Receipts')], limit=1)
@@ -20,6 +23,7 @@ class SaleOrder(models.Model):
                         'state': 'confirmed',
                     }, context=context)
             order_id = self.copy(cr, uid, order.id, context=context)
+            self.write(cr, uid, order_id, {'name': '%s-%s' %(order_number.name, str(cancel_number))}, context=context)
             ## TODO: Create incomming shipment
 
             return {
