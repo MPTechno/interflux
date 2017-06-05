@@ -10,8 +10,19 @@ class SaleOrder(models.Model):
     def action_sale_cancel(self, cr, uid, ids, context=None):
         picking_obj      = self.pool.get('stock.picking')
         picking_type_obj = self.pool.get('stock.picking.type')
-
+        account_invoice_obj = self.pool.get('account.invoice')
         for order in self.browse(cr, uid, ids, context=context):
+            # TODO: Kiem tra invoices
+            # Invoices co state = open paid => refund invocie do
+            invoice = account_invoice_obj.search(cr, uid, [('origin', '=', order.name)])
+            for invoice in account_invoice_obj.browse(cr, uid, invoice, context=context):
+                if(invoice.state == 'open'):
+                    account_invoice_obj.action_cancel(cr, uid, invoice.id, context=context)
+                elif (invoice.state == 'paid'):
+                    account_invoice_obj.refund(cr, uid, invoice.id, context=context)
+                else:
+                    return True
+
             order_name = order.name.split('-')[0]
             for picking in order.picking_ids:
                 picking_type_ids = picking_type_obj.search(cr, uid, [('name', '=', 'Receipts')], limit=1)
