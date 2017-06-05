@@ -3,9 +3,9 @@ from openerp.exceptions import Warning
 from openerp import api, fields, models, tools
 
 
-class AccountVoucher(models.Model):
+class AccountVoucherLine(models.Model):
 
-	_inherit = 'account.voucher'
+	_inherit = 'account.voucher.line'
 
 
 	@api.multi
