@@ -8,11 +8,21 @@
 				<xpath expr="//notebook/page/field[@name='line_dr_ids']/tree/field[@name='name']" position="after">
 					<field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
 				</xpath>
-				<!--<xpath expr="//field[@name='tax_amount']" position="replace">-->
-					<!--<field name="total_amount_tax" nolabel="1"/>-->
-				<!--</xpath>-->
+				<xpath expr="//notebook/page/field[@name='line_dr_ids']/tree/field[@name='account_id']" position="after">
+					<field name="account_id" domain="[('filter_type', 'in', ['equity','cash','bank','expense'])]"/>
+				</xpath>
 			</field>
 		</record>
+		<record id="view_purchase_receipt_form_extended_1" model="ir.ui.view">
+            <field name="name">account.voucher.inherit.form</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_filter_on_purchase_receipt.custom_account_voucher_form_view"/>
+            <field name="arch" type="xml">
+				<xpath expr="//notebook/page/field[@name='line_dr_ids']/tree/field[@name='account_id']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
 
+			</field>
+		</record>
 	</data>
 </openerp>
