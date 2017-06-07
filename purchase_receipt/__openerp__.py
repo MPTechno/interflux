@@ -15,6 +15,7 @@
     'demo': [],
     'data': [
         'views/purchase_receipt.xml',
+        'views/account_account.xml',
     ],
     'installable': True,
 }
