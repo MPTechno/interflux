@@ -277,7 +277,7 @@
                                     </span>
                                 </td>
                                 <td colspan="2" style="font-size: 12px;">
-                                    <span t-field="o.amount_untaxed"/>
+                                    <span t-field="o.pricelist_id.currency_id.symbol"/><span> </span><span t-field="o.amount_untaxed"/>
                                 </td>
                             </tr>
 
@@ -288,7 +288,7 @@
                                     </span>
                                 </td>
                                 <td colspan="2" style="font-size: 12px;">
-                                    <span t-field="o.amount_tax"/>
+                                    <span t-field="o.pricelist_id.currency_id.symbol"/><span> </span><span t-field="o.amount_tax"/>
                                 </td>
                             </tr>
 
@@ -299,7 +299,7 @@
                                     </span>
                                 </td>
                                 <td colspan="2" style="font-size: 12px;">
-                                    <span t-field="o.amount_total"/>
+                                    <span t-field="o.pricelist_id.currency_id.symbol"/><span> </span><span t-field="o.amount_total"/>
                                 </td>
                             </tr>
 
