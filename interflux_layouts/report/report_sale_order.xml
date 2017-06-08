@@ -209,6 +209,14 @@
                                       t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
                             </td>
                         </tr>
+                        <tr t-foreach="[1,2,3,4]" t-as="i">
+                            <td style="width:15%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black;"></td>
+                            <td style="width:30%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black; text-align: left"></td>
+                            <td style="width:15%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black;"></td>
+                            <td style="width:12%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black;"></td>
+                            <td style="width:14%;border-right:1px solid black;vertical-align:center;padding-bottom: 1em; border-bottom:0.5px solid black;"></td>
+                            <td style="width:14%;vertical-align:center;padding-bottom: 1em;  border-bottom:0.5px solid black;"></td>
+                        </tr>
                     </tbody>
                 </table>
                 <br/>

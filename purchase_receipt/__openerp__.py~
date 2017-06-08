@@ -11,7 +11,7 @@
     'category': 'purchase',
     'sequence': 0,
     'images': [],
-    'depends': ['account_voucher','account_filter_on_purchase_receipt'],
+    'depends': ['account_voucher'],
     'demo': [],
     'data': [
         'views/purchase_receipt.xml',
