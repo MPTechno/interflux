@@ -6,7 +6,7 @@
     'website': 'www.hashmicro.com',
     'author': 'HashMicro / Bharat Chauhan',
     'website': 'www.hashmicro.com',
-    'depends': ['account', 'account_voucher'],
+    'depends': ['account', 'account_voucher', 'l10n_vn'],
     'data': [
         'views/account_voucher.xml',
     ],
