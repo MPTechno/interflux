@@ -36,7 +36,7 @@ discount and same for the Invoice.
     'author': 'BrowseInfo',
     'website': 'http://www.browseinfo.in',
     'images': [],
-    'depends': ['sale', 'account'],
+    'depends': ['sale', 'account','weight_calculation'],
     'data': [
         'sale_view.xml',
         'account_invoice_view.xml',

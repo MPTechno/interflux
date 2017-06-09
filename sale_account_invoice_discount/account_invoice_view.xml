@@ -1,34 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <record id="view_account_invoice_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.form.view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <tree string="Invoice Lines" position="attributes">
+                    <attribute name="editable"></attribute>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_supplier_account_invoice_form_inherit" model="ir.ui.view">
+            <field name="name">account.supplier.invoice.inherit.form.view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <tree string="Invoice lines" position="attributes">
+                    <attribute name="editable"></attribute>
+                </tree>
+                <xpath expr="//field[@name='invoice_line']/tree//field[@name='price_unit']" position="after">
+                    <field name="discount_method" />
+                    <field name="discount_amount"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_supplier_account_invoice_line_form_inherit" model="ir.ui.view">
+            <field name="name">account.supplier.invoice.line.inherit.form.view</field>
+            <field name="model">account.invoice.line</field>
+            <field name="inherit_id" ref="account.view_invoice_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='price_unit']" position="after">
+                    <field name="discount_method" />
+                    <field name="discount_amount"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_invoice_discount_form_inherited" model="ir.ui.view">
+            <field name="name">account.invoice.discount.form.view.inherited</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="weight_calculation.account_order_weight_form"/>
+            <field name="arch" type="xml">
+                <field name="amount_untaxed" position="after">
+                    <field name="discount_amt" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_account_invoice_supplier_discount_form_inherited" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.discount.form.view.inherited</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="weight_calculation.account_supplier_order_weight_form"/>
+            <field name="arch" type="xml">
+                <field name="amount_untaxed" position="after">
+                    <field name="discount_amt" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                </field>
+            </field>
+        </record>
         
         <record id="view_account_invoice_discount_form" model="ir.ui.view">
             <field name="name">account.invoice.discount.form.view</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <field name="payment_term" position="before">
-                        <label for="discount_method"/>
-                        <div>
-                            <field name="discount_method" class="oe_inline"/>
-                        </div>
-                         <label for="discount_amount"/>
-                        <div>
-                            <field name="discount_amount" class="oe_inline"/>
-                            <label string="%%"
-                                attrs="{'invisible': [('discount_method', '!=', 'per')]}" class="oe_inline"/>
-                         </div>
-                         <field name="discount_amt" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                        <field name="visible_report"/>
-                </field>
-                <!-- <field name="amount_untaxed" position="after">
-                     <field name="discount_amt" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                </field> -->
                 <xpath expr="//field[@name='invoice_line']/tree//field[@name='price_unit']" position="after">
                     <field name="discount_method" />
-                </xpath>
-                <xpath expr="//field[@name='invoice_line']/tree//field[@name='discount']" position="replace">
-                    <field name="discount" string="Discount"/>
+                    <field name="discount_amount"/>
                 </xpath>
             </field>
         </record>

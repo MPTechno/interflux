@@ -13,7 +13,8 @@
                         <div>
                             <field name="discount_method" class="oe_inline"/>
                         </div>
-                         <label for="discount_amount"/>
+                        
+                        <label for="discount_amount"/>
                         <div>
                             <field name="discount_amount" class="oe_inline"/>
                             <label string="%%"
@@ -25,18 +26,19 @@
                 <field name="amount_tax" position="before">
                      <field name="discount_amt" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                 </field>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="after">
+                    <field name="discount_method"/>
+                    <field name="discount_amount"/>
+                </xpath>
                 <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="after">
                     <field name="discount_method"/>
-                </xpath>
-                <xpath expr="//field[@name='order_line']/form//field[@name='discount']" position="replace">
-                    <field name="discount" class="oe_inline" string="Discount"/>
-                    <label string="%%" attrs="{'invisible': [('discount_method', '!=', 'per')]}" class="oe_inline"/>
+                    <field name="discount_amount"/>
                 </xpath>
             </field>
         </record>
 
-        <record id="view_account_invoice_discount_form" model="ir.ui.view">
-            <field name="name">account.invoice.discount.form.view</field>
+        <record id="view_account_invoice_discount_form1" model="ir.ui.view">
+            <field name="name">account.invoice.discount.form.view1</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
@@ -58,12 +60,6 @@
                 <field name="amount_untaxed" position="after">
                      <field name="discount_amt" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                 </field>
-                <xpath expr="//field[@name='invoice_line']/tree//field[@name='price_unit']" position="after">
-                    <field name="discount_method" />
-                </xpath>
-                <xpath expr="//field[@name='invoice_line']/tree//field[@name='discount']" position="replace">
-                    <field name="discount" string="Discount"/>
-                </xpath>
             </field>
         </record>
 

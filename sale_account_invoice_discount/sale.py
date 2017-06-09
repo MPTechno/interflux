@@ -37,9 +37,9 @@ class sale_order(osv.osv):
         line_obj = self.pool['sale.order.line']
         price = line.price_unit
         if line.discount_method == 'fix':
-            price = price - line.discount
+            price = price - line.discount_amount
         elif line.discount_method == 'per':
-            price = price - (line.price_unit * ((line.discount or 0.0) / 100.0))
+            price = price - (line.price_unit * ((line.discount_amount or 0.0) / 100.0))
         else:
             price = price
         qty = line.product_uom_qty or 0.0
@@ -63,10 +63,10 @@ class sale_order(osv.osv):
                 res[self_obj.id] = discount
             for line_obj in self_obj.order_line:
                 if line_obj.discount_method == 'fix':
-                    discount += line_obj.discount * line_obj.product_uom_qty
+                    discount += line_obj.discount_amount * line_obj.product_uom_qty
                     res[self_obj.id] = discount
                 elif line_obj.discount_method == 'per':
-                    discount += line_obj.price_unit * ((line_obj.discount * line_obj.product_uom_qty or 0.0) / 100.0)
+                    discount += line_obj.price_unit * ((line_obj.discount_amount * line_obj.product_uom_qty or 0.0) / 100.0)
                     res[self_obj.id] = discount
                 else:
                     discount += 0.0
@@ -226,7 +226,8 @@ class sale_order_line(osv.osv):
         'price_subtotal': fields.function(
             _amount_line, string='Subtotal',
             digits_compute=dp.get_precision('Account')),
-        'discount': fields.float('Discount', digits_compute= dp.get_precision('Discount'), readonly=True, states={'draft': [('readonly', False)]}),
+        'discount_amount': fields.float('Discount'),
+        # 'discount': fields.float('Discount', digits_compute= dp.get_precision('Discount'), readonly=True, states={'draft': [('readonly', False)]}),
         }
 
     def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False,
@@ -236,6 +237,7 @@ class sale_order_line(osv.osv):
                         cr, uid, line=line, account_id=account_id,
                         context=context)
         res.update({'discount_method': line.discount_method,
+                    'discount_amount': line.discount_amount,
                     })
         return res
 
