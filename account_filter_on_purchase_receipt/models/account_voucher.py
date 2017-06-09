@@ -17,12 +17,11 @@ class AccountVoucherLine(models.Model):
 
 		bank_type = self.env['ir.model.data'].get_object_reference('account', 'data_account_type_bank')[1]
 		cash_type = self.env['ir.model.data'].get_object_reference('account', 'data_account_type_cash')[1]
+		equity_type = self.env['ir.model.data'].get_object_reference('account', 'conf_account_type_equity')[1]
 		expense_type = self.env['ir.model.data'].get_object_reference('account', 'data_account_type_expense')[1]
-		# equity_type = self.env['ir.model.data'].get_object_reference('account', 'account_type_cash_equity')[1]
 
-		account_ids = self.env['account.account'].search(['|',('user_type', 'in', [asset_type, asset_view_type, liability_type, liability_view_type,
-																			   bank_type, cash_type, expense_type]),('user_type.code','=','equity')])
 
+		account_ids = self.env['account.account'].search([('user_type', 'in', [asset_type, asset_view_type, liability_type, liability_view_type, bank_type, cash_type, equity_type, expense_type])])
 		return [('id', 'in', account_ids.ids)]
 
 	account_id = fields.Many2one('account.account', 'Account', required=True, domain=_compute_partner_id)
