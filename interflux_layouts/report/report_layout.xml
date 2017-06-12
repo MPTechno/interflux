@@ -141,12 +141,35 @@
                         <br/>
                         <br/>
                         <span>
-                            <strong>Vendor Code :</strong>
+                            <strong>Vendor Code : <span t-field="o.partner_id.name"/></strong><br/>
+                            <t t-if="o.partner_id.street">
+	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.street"/><br/>
+                            </t>
+                            <t t-if="o.partner_id.street2">
+	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.street2"/><br/>
+                            </t>
+                            <span style="color:white;">Vendor Code ::</span>
+                            <t t-if="o.partner_id.city">
+                            	<span t-field="o.partner_id.city"/><span style="color:white;">.</span>
+                        	</t>
+	                    	<t t-if="o.partner_id.state_id">
+	                            <span t-field="o.partner_id.state_id.code"/><span style="color:white;">.</span>
+                            </t>
+                            <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/><br/>
+                            <t t-if="o.partner_id.country_id">
+	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.country_id.name"/><br/>
+                            </t>
+                            <t t-if="o.partner_id.phone">
+                            	<span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.phone"/><br/>
+                        	</t>
+                        	<t t-if="o.partner_id.fax">
+	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.fax"/><br/>
+                            </t>
                         </span>
-                        <span>
+                        <!--span>
                             <div t-field="o.partner_id"
                                  t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true}"/>
-                        </span>
+                        </span-->
                         <br/>
                         <span>
                             <strong>Attention :</strong>
@@ -173,11 +196,11 @@
                         </h3>
                         <div style="margin-left:100px;">
                             <div class="invoice_details" t-if="o.name">
-                                <span>P/O NO:</span>
+                                <strong><span>P/O NO:</span></strong>
                                 <span t-field="o.name"/>
                             </div>
                             <div class="invoice_details" t-if="o.date_order">
-                                <span>Date:</span>
+                                <strong><span>Date:</span></strong>
                                 <span t-field="o.date_order" t-field-options='{"format": "d MMMM y"}'/>
                             </div>
                             <strong>SHIP TO:</strong>
@@ -299,7 +322,7 @@
                 <div class="row">
                     <div class="col-xs-6" style="text-align:left; font-size:11px !important;">
                         <div style="font-size: 15px !important">
-                            <span>Supplier Acknowledgement :</span>
+                            <strong><span>Supplier Acknowledgement :</span></strong>
                             <br/>
                             <div style="height:1px;width:50%;background:#000;margin-top:50px; "/>
                             <span style="">

@@ -36,7 +36,7 @@
                                         </th>
                                         <th class="text-center"
                                             style="width:15%;font-size: 12px;vertical-align:middle;border-bottom:1px solid black;">
-                                            AMOUNT
+                                            AMOUNT <br/><span t-field="o.currency_id.name"/>
                                         </th>
                                     </tr>
                                 </thead>
@@ -45,21 +45,21 @@
                                     <tr t-foreach="o.order_line" t-as="line">
                                         <t t-set="i" t-value="i+1"/>
                                         <td class="text-center"
-                                            style="width:10%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black; text-align: center;">
+                                            style="width:10%; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None; text-align: center;">
                                             <span t-esc="i"/>
                                         </td>
                                         <td class="text-center"
-                                            style="width:40%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                            style="width:40%; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;">
                                             <span t-field="line.name"/>
                                         </td>
                                         <td class="text-center"
-                                            style="width:15%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                            style="width:15%; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;">
                                             <!--<span t-field="line.product_qty"/>-->
                                             <span t-esc="'{0:,.2f}'.format(int(line.product_qty))"/>
                                             <span t-field="line.product_uom.name"/>
                                         </td>
                                         <td class="text-center"
-                                            style="width:20%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
+                                            style="width:20%; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;">
                                             <span t-esc="'{0:,.2f}'.format(int(line.price_unit))"/>
                                             <br/>
                                             <span>Discount:</span>
@@ -67,11 +67,21 @@
                                             <span>%</span>
                                         </td>
                                         <td class="text-center"
-                                            style="width:15%; border-right:1px solid black;vertical-align:bottom;padding-bottom: 1em; border-bottom:0.5px solid black;">
-                                            <span t-field="line.price_subtotal"
-                                                  t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                            style="width:15%; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;">
+                                            <span t-field="line.price_subtotal"/>
+                                            <!--t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"-->
                                         </td>
                                     </tr>
+
+									<!--Adding blank Rows-->
+                                    <tr t-foreach="[1,2,3,4,5,6,7,8,9,10,11,12,13]" t-as="i">
+                                    	<td style="width:10%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;"></td>
+                                    	<td style="width:40%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;"></td>
+                                    	<td style="width:15%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;"></td>
+                                    	<td style="width:20%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;"></td>
+                                    	<td style="width:15%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;"></td>
+                                    </tr>
+                                    <!--End Of Adding Blank Rows-->
                                 </tbody>
                             </table>
                         </div>
@@ -101,14 +111,17 @@
                                 </span>
                             </div>
                             <div class="col-xs-2" style="font-size:12px; text-align:right;">
-                                <span t-field="o.amount_untaxed"
-                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                <span t-field="o.amount_untaxed"/>
+                                <!--span t-field="o.amount_untaxed"
+                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/-->
                                 <br></br>
-                                <span t-field="o.amount_tax"
-                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                <span t-field="o.amount_tax"/>
+                              <!--span t-field="o.amount_tax"
+                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/-->
                                 <br></br>
-                                <span t-field="o.amount_total"
-                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                <span t-field="o.currency_id.name"/><span style="color:white;">..</span><span t-field="o.amount_total"/>
+                 	         <!--span t-field="o.amount_total"
+                                      t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/-->
                             </div>
                         </div>
                     </div>
