@@ -155,7 +155,9 @@
 	                    	<t t-if="o.partner_id.state_id">
 	                            <span t-field="o.partner_id.state_id.code"/><span style="color:white;">.</span>
                             </t>
-                            <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/><br/>
+                            <t t-if="o.partner_id.zip">
+	                            <span t-field="o.partner_id.zip"/>
+                            </t>
                             <t t-if="o.partner_id.country_id">
 	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.country_id.name"/><br/>
                             </t>
@@ -346,22 +348,22 @@
 
 
         <!-- PAGE FORMAT -->
-
-        <record id="interflux_layout_purchase_order_paper" model="report.paperformat">
-            <field name="name">Custom Interflux European A4 Portrait</field>
+        <record id="interflux_layout_purchase_order_paper_c" model="report.paperformat">
+            <field name="name">Custom Interflux European A4 Portrait : Purchase</field>
             <field name="default" eval="True"/>
             <field name="format">A4</field>
             <field name="page_height">0</field>
             <field name="page_width">0</field>
             <field name="orientation">Portrait</field>
-            <field name="margin_top">30</field>
-            <field name="margin_bottom">35</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">23</field>
             <field name="margin_left">7</field>
             <field name="margin_right">7</field>
             <field name="header_line" eval="False"/>
-            <field name="header_spacing">30</field>
+            <field name="header_spacing">35</field>
             <field name="dpi">90</field>
         </record>
+
 
         <report
                 id="purchase_order_id"
@@ -372,15 +374,22 @@
                 file="interflux_layouts.report_purchase_order"
         />
 
-        <report
+        <!--report
                 id="purchase_order_quotation_id"
                 model="purchase.orde"
                 string="Request for Quotation"
                 report_type="qweb-pdf"
                 name="interflux_layouts.report_purchase_order_quotation"
                 file="interflux_layouts.report_purchase_order_quotation"
-        />
-
+        /-->
+        <!-- Purchase Order report-->
+		<record id="purchase_order_id" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="interflux_layout_purchase_order_paper_c" />
+        </record>
+        <!-- RFQ report-->
+		<record id="purchase.report_purchase_quotation" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="interflux_layout_purchase_order_paper_c" />
+        </record>
 
 <!--Landscape-->
         <record id="interflux_layout_paper" model="report.paperformat">
