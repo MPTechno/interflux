@@ -8,6 +8,20 @@
                         <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
                         <div class="page">
                             <h2 style="font-size: 25px; text-align:center;"><strong>Tax Invoice</strong></h2>
+
+<div class="row mt32 mb32">
+    <div class="col-xs-4">
+        <strong>Description:</strong>
+        <p t-field="o.origin"/>
+    </div>
+    <div class="col-xs-4">
+        <strong>Description:</strong>
+    </div>
+    <div class="col-xs-4">
+        <strong>Description:</strong>
+    </div>
+</div>
+
                             <table style="width:100%;margin-top:20px;">
                                 <tr>
                                     <td style="font-size: 13px;  width:40%;text-align:left;margin-top:20px"><strong>Credit Terms:</strong> <span t-field="o.partner_id.property_payment_term.name"/></td>
@@ -121,9 +135,9 @@
                                 <thead>
                                     <tr>
                                         <th style="font-size: 12px;  width:8%;text-align:left;border: 1px solid black">Part No.</th>
-                                        <th style="font-size: 12px;  width:27%;text-align:left;border: 1px solid black">Product Description</th>
+                                        <th style="font-size: 12px;  width:26%;text-align:left;border: 1px solid black">Product Description</th>
                                         <th style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black">HS Code</th>
-                                        <th style="font-size: 12px;  width:10%;text-align:left;border: 1px solid black">Country of Origin</th>
+                                        <th style="font-size: 12px;  width:12%;text-align:left;border: 1px solid black">Country of Origin</th>
                                         <th style="font-size: 12px;  width:7%;text-align:center;border: 1px solid black">Batch</th>
                                         <th style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black">Quantity</th>
                                         <th style="font-size: 12px;  width:8%;text-align:center;border: 1px solid black">Unit</th>
@@ -135,9 +149,9 @@
                                 <tbody>
                                     <tr t-foreach="o.invoice_line" t-as="l" style="page-break-inside: avoid;">
                                          <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.product_id.default_code"/></td>
-                                         <td style="font-size: 12px;  width:27%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.name"/></td>
+                                         <td style="font-size: 12px;  width:26%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.name"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.product_id.hs_code"/></td>
-                                         <td style="font-size: 12px;  width:10%;text-align:center; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.product_id.country_of_origin"/></td>
+                                         <td style="font-size: 12px;  width:12%;text-align:center; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.product_id.country_of_origin"/></td>
                                          <td style="font-size: 12px;  width:7%;text-align:center; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-esc="o.get_batch_number(o,l.product_id)"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.quantity"/></td>
                                          <td style="font-size: 12px;  width:8%;text-align:center; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.uos_id"/></td>
@@ -146,7 +160,7 @@
                                          <td style="font-size: 12px;  width:8%;text-align:right; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><!--span t-field="o.currency_id.symbol"/--><span t-field="l.price_subtotal"/></td>
                                     </tr>
                                     <!--Adding blank Rows-->
-                                    <tr t-foreach="[1,2,3,4]" t-as="i">
+                                    <tr t-foreach="[1,2,3,4]" t-as="i" style="page-break-inside: avoid;">
                                     	<td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
                                     	<td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
                                     	<td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
@@ -162,7 +176,7 @@
                                 </tbody>
                             </table>
 
-                            <table style="width:100%; border:1px solid black; margin-top:-21px;">
+                            <table style="width:100%; border:1px solid black; margin-top:-21px; page-break-inside: avoid;">
                                 <thead style=" ">
                                     <tr>
                                         <th style="font-size: 12px;  width:25%;"><span style="margin-left:10px;">for INTERFLUX SINGAPORE PTE LTD</span></th>
