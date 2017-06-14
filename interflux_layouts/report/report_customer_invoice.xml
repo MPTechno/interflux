@@ -147,7 +147,7 @@
                                          <td style="font-size: 12px;  width:8%;text-align:right; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><!--span t-field="o.currency_id.symbol"/--><span t-field="l.price_subtotal"/></td>
                                     </tr>
                                     <!--Adding blank Rows-->
-                                    <tr t-foreach="[1,2,3,4]" t-as="i" style="page-break-inside: avoid;">
+                                    <tr t-foreach="[1]" t-as="i" style="page-break-inside: avoid;">
                                     	<td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
                                     	<td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
                                     	<td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
@@ -188,7 +188,7 @@
                                 </tbody>
                             </table>
                         <br/>
-                        <p style="font-size: 13px;">All Cheques payment should be made and crossed to <b>"Interflux Singapore Pte Ltd."</b><br/>
+                        <p style="font-size: 11px;">All Cheques payment should be made and crossed to <b>"Interflux Singapore Pte Ltd."</b><br/>
 				        For remittance payment: All Bank charges inside &amp; outside Singapore should be borne by buyer. Otherwise a SGD30/Eur30/USD30 bank reimbursement is charged for each TT transation.<br/>
 				        Interest at 1.5% per month will be levied on overdue account from credit terms.</p>
                         </div>
