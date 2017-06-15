@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_interflux_layouts_interflux_layouts,interflux_layouts.interflux_layouts,model_interflux_layouts_interflux_layouts,,1,0,0,0
+access_shipment_term,interflux_layouts.shipment_term,model_shipment_term,,1,1,1,1
+access_interflux_pn_cod,interflux_layouts.interflux_pn_cod,model_interflux_pn_cod,,1,1,1,1
