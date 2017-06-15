@@ -166,10 +166,10 @@
                             <table style="width:100%; border:1px solid black; margin-top:-21px; page-break-inside: avoid;">
                                 <thead style=" ">
                                     <tr>
-                                        <th style="font-size: 12px;  width:25%;"><span style="margin-left:10px;">for INTERFLUX SINGAPORE PTE LTD</span></th>
-                                        <th style="font-size: 12px;  width:11%;text-align:center;">Total Packaging</th>
-                                        <th style="font-size: 12px;  width:11%;text-align:center;padding-left:5px; padding-right:5px">Total Net Weight KG</th>
-                                        <th style="font-size: 12px;  width:11%;padding-left:3px; padding-right:3px">Total Gross Weight KG <span style="color:white;">.........................:</span></th>
+                                        <th style="font-size: 12px;  width:24%;"><span style="margin-left:10px;">for INTERFLUX SINGAPORE PTE LTD</span></th>
+                                        <th style="font-size: 12px;  width:11%;text-align:center;">Total <br/>Packaging</th>
+                                        <th style="font-size: 12px;  width:13%;text-align:center;padding-left:5px; padding-right:5px">Total Net Weight <br/>KG</th>
+                                        <th style="font-size: 12px;  width:13%;padding-left:3px; padding-right:3px">Total Gross Weight <br/><span style="color:white;">Total G</span>KG <!--span style="color:white;">.........................:</span--></th>
                                         <th style="font-size: 12px;  width:19%;text-align:center;padding-left:5px; padding-right:5px">Sub Total</th>
                                         <th style="font-size: 12px;  width:11%;text-align:center;padding-left:3px; padding-right:3px">7% GST</th>
                                         <th style="font-size: 12px;  width:9%;text-align:center;">Total Amount</th>
@@ -177,17 +177,16 @@
                                 </thead>
                                 <tbody style=" ">
                                     <tr style="line-height:30px;">
-                                        <td style="font-size: 12px;  width:25%;"><u><span style="margin-left:10px; color:white;">for INTERFLUX SINGAPORE PTE LTD</span></u></td>
+                                        <td style="font-size: 12px;  width:24%;"><u><span style="margin-left:10px; color:white;">for INTERFLUX SINGAPORE PTE LTD</span></u></td>
                                         <td style="font-size: 12px;  width:11%;text-align:center;"><span t-field="o.total_packaging"/></td>
-                                        <td style="font-size: 12px;  width:11%;text-align:center;"><span t-field="o.in_net_weight_total"/></td>
-                                        <td style="font-size: 12px;  width:11%;text-align:center;"><span t-field="o.in_weight_total"/></td>
+                                        <td style="font-size: 12px;  width:13%;text-align:center;"><span t-field="o.in_net_weight_total"/></td>
+                                        <td style="font-size: 12px;  width:13%;text-align:center;"><span t-field="o.in_weight_total"/></td>
                                         <td style="font-size: 12px;  width:19%;text-align:center;"><span t-field="o.currency_id.name"/><span t-field="o.amount_untaxed"/></td>
                                         <td style="font-size: 12px;  width:11%;text-align:center;"><!--span t-field="o.currency_id.name"/--><span t-field="o.amount_tax"/></td>
                                         <td style="font-size: 12px;  width:9%;text-align:center;"><span t-field="o.currency_id.name"/><span t-field="o.amount_total"/></td>
                                     </tr>
                                 </tbody>
                             </table>
-                        <br/>
                         <p style="font-size: 11px;">All Cheques payment should be made and crossed to <b>"Interflux Singapore Pte Ltd."</b><br/>
 				        For remittance payment: All Bank charges inside &amp; outside Singapore should be borne by buyer. Otherwise a SGD30/Eur30/USD30 bank reimbursement is charged for each TT transation.<br/>
 				        Interest at 1.5% per month will be levied on overdue account from credit terms.</p>

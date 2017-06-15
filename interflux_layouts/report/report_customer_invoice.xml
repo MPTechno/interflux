@@ -20,7 +20,7 @@
                                     <th style="font-size: 13px;  width:40%;text-align:left;margin-top:20px"><strong>Bank Details:</strong></th>
                                     <th style="font-size: 15px;  width:12%;text-align:left;margin-top:20px">Invoice No.: <span t-field="o.number"/></th>
                                     <td style="font-size: 13px;  width:18%;text-align:left;margin-top:20px;"></td>
-                                    <th style="font-size: 13px;  width:30%;text-align:left;margin-top:20px;"><span t-field="o.partner_id.name"></span></th>
+                                    <th style="font-size: 13px;  width:30%;text-align:left;margin-top:20px;"><span t-esc="o.get_delivery_address(o)"/></th>
                                 </tr>
                                 <tr>
                                     <td style="font-size: 13px;  width:40%;text-align:left;margin-top:20px"><strong>Bank Name :</strong>
