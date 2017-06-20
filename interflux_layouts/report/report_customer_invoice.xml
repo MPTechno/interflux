@@ -14,14 +14,31 @@
 		<b style="font-size: 13px;">Bank Details:</b><br/>
 		<b style="font-size: 13px;">Bank Name:</b><span style="color:white;">......</span><span t-field="o.partner_bank_id.bank_name"/><br/>
 		<b style="font-size: 13px;">Bank Address:</b><span style="color:white;">..</span>
-                      <span t-field="o.partner_bank_id.bank.street" style="font-size: 13px;"/>
-                      <span t-field="o.partner_bank_id.bank.street2" style="font-size: 13px;"/><br/>
-                      <span style="color:white;">..Bank Address:</span>
-                      <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.zip"/><span style="color:white;">...</span>
-                      <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.city"/><br/>
-                      <span style="color:white;">..Bank Address:</span>
-                      <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.state.name"/><span style="color:white;">...</span>
-                      <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.country.name"/>
+		              <t t-if="o.partner_bank_id.bank.street">
+                        <span t-field="o.partner_bank_id.bank.street" style="font-size: 13px;"/><br/>
+                      </t>
+                      <t t-if="o.partner_bank_id.bank.street2">
+                        <span style="color:white;">Bank Address:...</span>
+                        <span t-field="o.partner_bank_id.bank.street2" style="font-size: 13px;"/><br/>
+                      </t>
+                      <t t-if="o.partner_bank_id.bank.city">
+                        <span style="color:white;">Bank Address:...</span>
+                        <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.city"/><br/>
+                      </t>
+                      <t t-if="o.partner_bank_id.bank.state.name">
+                        <span style="color:white;">Bank Address:...</span>
+                        <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.state.name"/><br/>
+                      </t>
+                      <t t-if="o.partner_bank_id.bank.country.name">
+                        <span style="color:white;">Bank Address:...</span>
+                        <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.country.name"/>
+                        <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.zip"/>
+                      </t>
+                      <t t-if="not o.partner_bank_id.bank.country.name">
+                        <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.zip"/>
+                      </t>
+                      
+                      
                 <br/>
 		<b style="font-size: 13px;">Bank Branch:</b><span style="color:white;">....</span><span t-field="o.partner_bank_id.bank_branch"/><br/>
 		<b style="font-size: 13px;">Bank Swift No.:</b><span style="color:white;">.</span><span t-field="o.partner_bank_id.bank_bic"/><br/>
@@ -131,8 +148,8 @@
                                     <th style="font-size: 13px;  width:18%;text-align:left;margin-top:20px;"></th>
                                     <th style="font-size: 13px;  width:30%;text-align:left;margin-top:20px;"></th>
                                 </tr>
-                            </table-->
-                            <br/>
+                            </table>
+                            <br/-->
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
