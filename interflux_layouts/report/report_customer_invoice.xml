@@ -35,6 +35,7 @@
                         <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.zip"/>
                       </t>
                       <t t-if="not o.partner_bank_id.bank.country.name">
+                        <span style="color:white;">Bank Address:...</span>
                         <span style="font-size: 13px;" t-field="o.partner_bank_id.bank.zip"/>
                       </t>
                       
