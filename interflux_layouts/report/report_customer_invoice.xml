@@ -49,9 +49,22 @@
 
 	</div>
 	<div class="col-xs-4">
-		<br/><h1 style="text-align:center;"><b>Tax Invoice</b></h1><br/>
-                <b style="font-size: 13px;">Invoice No.: </b><span style="color:white;">.............</span><b><span t-field="o.number"/></b><br/>
-                <b style="font-size: 13px;">Invoice Date: </b><span style="color:white;">...........</span><span t-field="o.date_invoice"/><br/>
+		<br/><h1 style="text-align:center;"><b t-if="o.type != 'out_refund'">Tax Invoice</b>
+											<b t-if="o.type == 'out_refund'">Credit Note</b></h1><br/>
+				<t t-if="o.type != 'out_refund'">
+		            <b style="font-size: 13px;">Invoice No.: </b><span style="color:white;">...........</span>
+	            </t>
+                <t t-if="o.type == 'out_refund'">
+                	<b style="font-size: 13px;">Credit Note No.: </b><span style="color:white;">.....</span>
+                </t>
+                <b><span t-field="o.number"/></b><br/>
+                <t t-if="o.type != 'out_refund'">
+                	<b style="font-size: 13px;">Invoice Date: </b><span style="color:white;">.........</span>
+                </t>
+                <t t-if="o.type == 'out_refund'">
+	                <b style="font-size: 13px;">Credit Note Date: </b><span style="color:white;">...</span>
+                </t>
+                <span t-field="o.date_invoice"/><br/>
                 <b style="font-size: 13px;">Delivery Order No.: </b><span style="color:white;">.</span><span t-esc="o.get_delivery_order_number(o)"/><br/>
                 <b style="font-size: 13px;">Your P/O No.: </b><span style="color:white;">..........</span><span t-esc="o.get_your_po_number(o)"/><br/>
                 <b style="font-size: 13px;">Shipping Terms: </b><span style="color:white;">.....</span><span t-field="o.invoice_incoterm"/><br/>
