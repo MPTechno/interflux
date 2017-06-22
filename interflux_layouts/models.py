@@ -172,3 +172,14 @@ class StockPicking(models.Model):
         sale_order = self.env['sale.order'].search([('name', '=', origin)])
         if sale_order and sale_order[0].client_order_ref:
             return sale_order[0].your_po_no
+
+class res_partner_bank(osv.osv):
+	_inherit = 'res.partner.bank'
+
+	def name_search(self, cr, uid, name, args=None, operator='ilike', context=None, limit=100):
+		ids = self.search(cr, uid, args, context=context)
+
+		if not len(ids) > 0:
+			ids = self.search(cr, uid, [], context=context)
+		return self.name_get(cr, uid, ids, context=context)
+
