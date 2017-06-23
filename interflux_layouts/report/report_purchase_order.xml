@@ -108,9 +108,6 @@
                         <br/><br/>
                         <br/><br/>
                         <br/><br/>
-                        <br/><br/>
-                        <br/><br/>
-                        <br/><br/>
                         <div class="row">
                             <table border="1pt solid black" class="table1 table-condensed"
                                    style="table-layout: fixed; page-break-inside:auto; width:100%; border:1px solid black;">
@@ -146,7 +143,7 @@
                                             style="width:10%; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None; text-align: center;">
                                             <span t-esc="i"/>
                                         </td>
-                                        <td class="text-center"
+                                        <td class="text-left"
                                             style="width:40%; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;">
                                             <span t-field="line.name"/>
                                         </td>

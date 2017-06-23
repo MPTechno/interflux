@@ -143,29 +143,36 @@
                         <span>
                             <strong>Vendor Code : <span t-field="o.partner_id.name"/></strong><br/>
                             <t t-if="o.partner_id.street">
-	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.street"/><br/>
+	                            <span style="color:white;">Vendor Code ::</span>
+	                            <span t-field="o.partner_id.street"/><br/>
                             </t>
                             <t t-if="o.partner_id.street2">
-	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.street2"/><br/>
+	                            <span style="color:white;">Vendor Code ::</span>
+	                            <span t-field="o.partner_id.street2"/><br/>
                             </t>
-                            <span style="color:white;">Vendor Code ::</span>
                             <t t-if="o.partner_id.city">
-                            	<span t-field="o.partner_id.city"/><span style="color:white;">.</span>
+                                <span style="color:white;">Vendor Code ::</span>
+                            	<span t-field="o.partner_id.city"/><br/>
                         	</t>
 	                    	<t t-if="o.partner_id.state_id">
-	                            <span t-field="o.partner_id.state_id.code"/><span style="color:white;">.</span>
+	                    	    <span style="color:white;">Vendor Code ::</span>
+	                            <span t-field="o.partner_id.state_id.name"/><br/>
                             </t>
                             <t t-if="o.partner_id.zip">
-	                            <span t-field="o.partner_id.zip"/>
+                                <span style="color:white;">Vendor Code ::</span>
+	                            <span t-field="o.partner_id.zip"/><br/>
                             </t>
                             <t t-if="o.partner_id.country_id">
-	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.country_id.name"/><br/>
+	                            <span style="color:white;">Vendor Code ::</span>
+	                            <span t-field="o.partner_id.country_id.name"/><br/>
                             </t>
                             <t t-if="o.partner_id.phone">
-                            	<span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.phone"/><br/>
+                            	<span style="color:white;">Vendor Code ::</span>
+                            	<span t-field="o.partner_id.phone"/><br/>
                         	</t>
                         	<t t-if="o.partner_id.fax">
-	                            <span style="color:white;">Vendor Code ::</span><span t-field="o.partner_id.fax"/><br/>
+	                            <span style="color:white;">Vendor Code ::</span>
+	                            <span t-field="o.partner_id.fax"/><br/>
                             </t>
                         </span>
                         <!--span>
@@ -222,36 +229,27 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
-                    <div class="col-xs-3" style="align: center; text-align: center;">
-                        <strong>SHIP VIA</strong>
-                    </div>
-                    <div class="col-xs-3" style="align: center; text-align: center;">
-                        <strong>TERMS</strong>
-                    </div>
-                    <div class="col-xs-3" style="align: center; text-align: center;">
-                        <strong>Delivery Date</strong>
-                    </div>
-                    <div class="col-xs-3 list-inline" style="align: center; text-align: center;">
-                        <strong>Page</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-3" style="align: center; text-align: center;">
-                        <span t-field="o.incoterm_id"/>
-                    </div>
-                    <div class="col-xs-3" style="align: center; text-align: center;">
-                        <span t-field="o.payment_term_id"/>
-                    </div>
-                    <div class="col-xs-3" style="align: center; text-align: center;">
-                        <span t-field="o.minimum_planned_date"/>
-                    </div>
-                    <div class="col-xs-3 text-center">
-                        <span>Page</span>
-                        <span class="page"/>
-                        of
-                        <span class="topage"/>
-                    </div>
+                <div style="font-size:12px;">
+                    <table>
+                        <tr>
+                            <th style="width:25%;">SHIP VIA</th>
+                            <th><span style="color:white;">.....</span></th>
+                            <th style="width:25%;">TERMS</th>
+                            <th><span style="color:white;">.....</span></th>
+                            <th style="width:25%;">Delivery Date</th>
+                            <th><span style="color:white;">.....</span></th>
+                            <th style="width:25%;">Page</th>
+                        </tr>
+                        <tr>
+                            <td><span t-field="o.incoterm_id.name"/></td>
+                            <td><span style="color:white;">.</span></td>
+                            <td><span t-field="o.payment_term_id.name"/></td>
+                            <td><span style="color:white;">.</span></td>
+                            <td><span t-field="o.minimum_planned_date"/></td>
+                            <td><span style="color:white;">.</span></td>
+                            <td><span>Page</span><span class="page"/>of<span class="topage"/></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </template>
