@@ -6,12 +6,6 @@
                 <t t-call="interflux_layouts.external_purchase_order_quotation_layout">
                     <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
                     <div class="page">
-                        <br/><br/>
-                        <br/><br/>
-                        <br/><br/>
-                        <br/><br/>
-                        <br/><br/>
-                        <br/>
                         <div class="row">
                             <table border="1pt solid black" class="table1 table-condensed"
                                    style="table-layout: fixed; page-break-inside:auto; width:100%; border:1px solid black;">

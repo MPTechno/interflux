@@ -136,7 +136,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-5" style="font-size:12px;">
+                    <div class="col-xs-5" style="font-size:10px;">
                         <br/>
                         <br/>
                         <br/>
@@ -150,35 +150,17 @@
 	                            <span style="color:white;">Vendor Code ::</span>
 	                            <span t-field="o.partner_id.street2"/><br/>
                             </t>
-                            <t t-if="o.partner_id.city">
-                                <span style="color:white;">Vendor Code ::</span>
-                            	<span t-field="o.partner_id.city"/><br/>
-                        	</t>
-	                    	<t t-if="o.partner_id.state_id">
-	                    	    <span style="color:white;">Vendor Code ::</span>
-	                            <span t-field="o.partner_id.state_id.name"/><br/>
+                            <t t-if="o.partner_id.country_id">
+	                            <span style="color:white;">Vendor Code ::</span>
+	                            <span t-field="o.partner_id.country_id.name"/>
+	                            <span style="color:white;">:</span>
+	                            <span t-field="o.partner_id.zip"/><br/>
                             </t>
-                            <t t-if="o.partner_id.zip">
+                            <t t-if="not o.partner_id.country_id">
                                 <span style="color:white;">Vendor Code ::</span>
 	                            <span t-field="o.partner_id.zip"/><br/>
                             </t>
-                            <t t-if="o.partner_id.country_id">
-	                            <span style="color:white;">Vendor Code ::</span>
-	                            <span t-field="o.partner_id.country_id.name"/><br/>
-                            </t>
-                            <t t-if="o.partner_id.phone">
-                            	<span style="color:white;">Vendor Code ::</span>
-                            	<span t-field="o.partner_id.phone"/><br/>
-                        	</t>
-                        	<t t-if="o.partner_id.fax">
-	                            <span style="color:white;">Vendor Code ::</span>
-	                            <span t-field="o.partner_id.fax"/><br/>
-                            </t>
                         </span>
-                        <!--span>
-                            <div t-field="o.partner_id"
-                                 t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true}"/>
-                        </span-->
                         <br/>
                         <span>
                             <strong>Attention :</strong>
@@ -260,30 +242,6 @@
                     <img t-if="o.company_id.invoice_header"
                          t-att-src="'data:image/png;base64,%s' % o.company_id.invoice_header"
                          style="max-height: 110px; "/>
-                    <!--<div class="col-xs-8" style="align: center;">-->
-                    <!--<div lass="col-xs-8"-->
-                    <!--style="margin-top:10px;text-align:right; font-size:30px; font-weight:700; padding-right: 115px;">-->
-                    <!--<span>Delivery Order</span>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!-- <div class="col-xs-4" style="font-size:10px;margin-top:90px;"> -->
-                    <!-- <div> -->
-                    <!-- <span> -->
-                    <!-- <strong>Warehouse Address:</strong> -->
-                    <!-- </span> -->
-                    <!-- <br /> -->
-                    <!-- <span t-field="o.picking_type_id.warehouse_id.partner_id.name" /> -->
-                    <!-- <br /> -->
-                    <!-- <span t-field="o.picking_type_id.warehouse_id.partner_id.street" /> -->
-                    <!-- <span t-field="o.picking_type_id.warehouse_id.partner_id.street2" /> -->
-                    <!-- <span t-field="o.picking_type_id.warehouse_id.partner_id.city" /> -->
-                    <!-- <br /> -->
-                    <!-- <span t-field="o.picking_type_id.warehouse_id.partner_id.country_id.name" /> -->
-                    <!-- <span t-field="o.picking_type_id.warehouse_id.partner_id.zip" /> -->
-                    <!-- <br /> -->
-                    <!-- Attn : <span t-field="o.picking_type_id.warehouse_id.attn" /> - Hp : <span t-field="o.picking_type_id.warehouse_id.hp" /><br /> -->
-                    <!-- Tel : <span t-field="o.picking_type_id.warehouse_id.attn_tel" /></div> -->
-                    <!-- </div> -->
                 </div>
             </div>
         </template>
@@ -353,12 +311,12 @@
             <field name="page_height">0</field>
             <field name="page_width">0</field>
             <field name="orientation">Portrait</field>
-            <field name="margin_top">40</field>
+            <field name="margin_top">90</field>
             <field name="margin_bottom">30</field>
             <field name="margin_left">7</field>
             <field name="margin_right">7</field>
             <field name="header_line" eval="False"/>
-            <field name="header_spacing">35</field>
+            <field name="header_spacing">95</field>
             <field name="dpi">90</field>
         </record>
 
