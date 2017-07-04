@@ -14,7 +14,9 @@
                                 </tr>
                                 <tr>
                                     <td style="font-size: 12px;  width:60%;text-align:left;margin-top:8px;"><span t-field="o.partner_id.name"/></td>
-                                    <td style="font-size: 12px;  width:40%;text-align:left;margin-top:8px;">Quotation Ref: <span style="text-align:left;" t-field="o.client_order_ref"/></td>
+                                    <td style="font-size: 12px;  width:40%;text-align:left;margin-top:8px;">Quotation Ref: 
+                                    <span style="text-align:left;" t-esc="o.check_date_sequence(o)"/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td style="font-size: 12px;  width:60%;text-align:left;"><span t-field="o.partner_id.street"/></td>
@@ -57,7 +59,7 @@
                                     </tr>
                                 </thead>
                                     <tr t-foreach="o.order_line" t-as="l">
-                                        <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
+                                        <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><t t-esc="l.product_id.default_code"/></td>
                                         <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None">Customer P/N:</td>
                                         <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
                                         <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.product_uom_qty"/><span> </span><span t-field="l.product_uom.name"/></td>
@@ -128,7 +130,9 @@
                                 </tr>
                                 <tr>
                                     <td style="font-size: 12px;  width:60%;text-align:left;margin-top:8px;"><span t-field="o.partner_id.name"/></td>
-                                    <td style="font-size: 12px;  width:40%;text-align:left;margin-top:8px;">Quotation Ref: <span style="text-align:left;" t-field="o.name"/></td>
+                                    <td style="font-size: 12px;  width:40%;text-align:left;margin-top:8px;">Quotation Ref: 
+                                    <span style="text-align:left;" t-esc="o.check_date_sequence(o)"/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td style="font-size: 12px;  width:60%;text-align:left;"><span t-field="o.partner_id.street"/></td>
