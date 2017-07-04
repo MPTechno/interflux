@@ -39,15 +39,8 @@ class PurchaseOrderLine(models.Model):
 	@api.model
 	def _get_part_no(self):
 		for line in self:
-			picking_ids = self.env['stock.picking'].search([('origin','=',str(line.order_id.name))])
-			if len(picking_ids) > 0:
-				picking_id = picking_ids[0]
-				operation_ids = self.env['stock.pack.operation'].search([
-														('picking_id','=',picking_id.id),
-														('product_id','=',line.product_id.id)
-														])
-				if len(operation_ids) > 0:
-					line.part_no = str(operation_ids[0].lot_id.name)
+			if line.product_id:
+				line.part_no = line.product_id.default_code or ''
 		
 	part_no = fields.Char(compute=_get_part_no,string="Partn No")
 
