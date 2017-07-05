@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Sequences for Assembly-->
+        <record id="seq_type_assembly_assembly" model="ir.sequence.type">
+            <field name="name">Assembly Management</field>
+            <field name="code">assembly.assembly</field>
+        </record>
+
+        <record id="seq_assembly" model="ir.sequence">
+            <field name="name">Assembly Management</field>
+            <field name="code">assembly.assembly</field>
+            <field name="prefix">MRF17-</field>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+</openerp>
