@@ -31,17 +31,7 @@ from openerp.osv import osv
 class mrp_production(models.Model):
     _inherit = "mrp.production"
 
-    @api.model
-    def _default_name_sequence(self):
-        order_type = self._context.get('type', 'man')
-        if order_type=='man':
-            name = self.env['ir.sequence'].next_by_code('mrp.production')
-        else:
-            name = self.env['ir.sequence'].next_by_code('assembly.assembly') 
-        return name
-
-    name = fields.Char(string='Name', required=True, states={'draft': [('readonly', False)]}, copy=False,
-        default=_default_name_sequence)
+    name = fields.Char(string='Name', required=True, readonly=True, copy=False)
     mrp_remark = fields.Text('Remark')
 
     type = fields.Selection([
@@ -49,3 +39,13 @@ class mrp_production(models.Model):
             ('assembly','Assembly'),
         ], string='Type', default=lambda self: self._context.get('type', 'man'),
         track_visibility='always')
+    @api.model
+    def create(self,vals):
+        order_type = vals.get('type',False)
+        if order_type == 'man':
+            name = self.env['ir.sequence'].next_by_code('mrp.production')
+            vals.update({'name':name})
+        else:
+            name = self.env['ir.sequence'].next_by_code('assembly.assembly')
+            vals.update({'name':name})
+        return super(mrp_production,self).create(vals)
