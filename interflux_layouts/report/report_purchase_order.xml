@@ -65,12 +65,12 @@
                                         <td class="text-center"
                                             style="width:15%; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;">
                                             <!--<span t-field="line.product_qty"/>-->
-                                            <span t-esc="'{0:,.2f}'.format(int(line.product_qty))"/>
+                                            <span t-esc="'{0:,.2f}'.format(line.product_qty)"/>
                                             <span t-field="line.product_uom.name"/>
                                         </td>
                                         <td class="text-center"
                                             style="width:20%;border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None;">
-                                            <span t-esc="'{0:,.2f}'.format(int(line.price_unit))"/>
+                                            <span t-esc="'{0:,.4f}'.format(line.price_unit)"/>
                                             <br/>
                                             <span>Discount:</span>
                                             <span t-field="line.discount"/>
