@@ -188,12 +188,12 @@
                         <div style="margin-left:100px;">
                             <div class="invoice_details" t-if="o.name">
                                 <strong><span>P/O NO:</span></strong>
-                                <span t-field="o.name"/>
-                            </div>
-                            <div class="invoice_details">
-                                <strong><span>Supplier Reference:</span></strong>
                                 <span t-field="o.partner_ref"/>
                             </div>
+                            <!--div class="invoice_details">
+                                <strong><span>Supplier Reference:</span></strong>
+                                <span t-field="o.partner_ref"/>
+                            </div-->
                             <div class="invoice_details" t-if="o.date_order">
                                 <strong><span>Date:</span></strong>
                                 <span t-field="o.date_order" t-field-options='{"format": "d MMMM y"}'/>
