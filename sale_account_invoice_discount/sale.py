@@ -217,7 +217,7 @@ class sale_order_line(osv.osv):
             cur = line.order_id.pricelist_id.currency_id
             res[line.id] = cur_obj.round(cr, uid, cur, taxes['total'])
         return res
-
+    
     _columns = {
         'is_apply_on_discount_amount': fields.boolean(
             "Tax Apply After Discount"),
@@ -226,7 +226,7 @@ class sale_order_line(osv.osv):
         'price_subtotal': fields.function(
             _amount_line, string='Subtotal',
             digits_compute=dp.get_precision('Account')),
-        'discount_amount': fields.float('Discount'),
+        #'discount_amount': fields.float('Discount'),
         # 'discount': fields.float('Discount', digits_compute= dp.get_precision('Discount'), readonly=True, states={'draft': [('readonly', False)]}),
         }
 

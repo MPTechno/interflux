@@ -89,10 +89,10 @@ class account_invoice(models.Model):
 				continue
 			# Get the correct line residual amount
 			if line.currency_id == self.currency_id:
-				line_amount = line.amount_residual_currency if line.currency_id else line.amount_residual - self.discount_amt
+				line_amount = line.amount_residual_currency if line.currency_id else line.amount_residual
 			else:
 				from_currency = line.company_id.currency_id.with_context(date=line.date)
-				line_amount = from_currency.compute(line.amount_residual - self.discount_amt, self.currency_id)
+				line_amount = from_currency.compute(line.amount_residual, self.currency_id)
 			# For partially reconciled lines, split the residual amount
 			if line.reconcile_partial_id:
 				partial_reconciliation_invoices = set()
@@ -154,7 +154,35 @@ account_invoice()
 
 class account_invoice_line(models.Model):
 	_inherit = 'account.invoice.line'
-
+	
+	@api.onchange('discount_amount')
+	def onchange_discount_amount(self):
+		self.discount = self.discount_amount
+		
+	@api.onchange('discount')
+	def onchange_discount(self):
+		self.discount_amount = self.discount
+	
+	@api.model
+	def move_line_get_item(self, line):
+		print "line------>>>>", line
+		disc_amount = 0.0
+		if line.discount_method=='fix':
+			disc_amount = line.discount_amount
+		elif line.discount_method=='per':
+			disc_amount = (line.discount_amount/100) * (line.quantity*line.price_unit)
+		return {
+			'type': 'src',
+			'name': line.name.split('\n')[0][:64],
+			'price_unit': line.price_unit,
+			'quantity': line.quantity,
+			'price': line.price_subtotal - disc_amount,
+			'account_id': line.account_id.id,
+			'product_id': line.product_id.id,
+			'uos_id': line.uos_id.id,
+			'account_analytic_id': line.account_analytic_id.id,
+			'taxes': line.invoice_line_tax_id,
+			}
 
 	@api.one
 	@api.depends('price_unit', 'discount', 'invoice_line_tax_id', 'quantity',
