@@ -10,9 +10,13 @@ class account_invoice(models.Model):
     #Used for "Invoice" report
     @api.model
     def get_batch_number(self, obj, product_id):
-    	origin = obj.origin
     	stock_picking_pool = self.env['stock.picking']
-    	stock_picking = stock_picking_pool.search([('name','=',obj.origin)])
+    	search_field = None
+    	if '/' in str(obj.origin):
+    	    search_field = 'name'
+    	else:
+    	    search_field = 'origin'
+    	stock_picking = stock_picking_pool.search([(search_field,'=',obj.origin)])
     	if stock_picking:
     		for pack_operation in stock_picking.pack_operation_ids:
     			if pack_operation.product_id == product_id:
