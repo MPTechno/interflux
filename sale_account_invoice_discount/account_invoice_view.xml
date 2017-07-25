@@ -23,6 +23,7 @@
                 <xpath expr="//field[@name='invoice_line']/tree//field[@name='price_unit']" position="after">
                     <field name="discount_method" />
                     <field name="discount_amount"/>
+                    <field name="discount" invisible="1"/>
                 </xpath>
             </field>
         </record>
@@ -35,6 +36,7 @@
                 <xpath expr="//field[@name='price_unit']" position="after">
                     <field name="discount_method" />
                     <field name="discount_amount"/>
+                    <field name="discount" invisible="1"/>
                 </xpath>
             </field>
         </record>
