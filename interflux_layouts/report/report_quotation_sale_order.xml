@@ -51,7 +51,7 @@
                                 <thead>
                                     <tr>
                                         <th style="font-size: 12px;  width:15%;text-align:center;border: 1px solid black">Part No.</th>
-                                        <th style="font-size: 12px;  width:30%;text-align:center;border: 1px solid black">Quotation</th>
+                                        <th style="font-size: 12px;  width:30%;text-align:center;border: 1px solid black">Description</th>
                                         <th style="font-size: 12px;  width:15%;text-align:center;border: 1px solid black">Shipment Terms</th>
                                         <th style="font-size: 12px;  width:10%;text-align:center;border: 1px solid black">Min Order Qty</th>
                                         <th style="font-size: 12px;  width:15%;text-align:center;border: 1px solid black">Unit Price</th>
@@ -60,7 +60,7 @@
                                 </thead>
                                     <tr t-foreach="o.order_line" t-as="l">
                                         <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><t t-esc="l.product_id.default_code"/></td>
-                                        <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None">Customer P/N:</td>
+                                        <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.name"/></td>
                                         <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"></td>
                                         <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.product_uom_qty"/><span> </span><span t-field="l.product_uom.name"/></td>
                                         <td style="font-size: 12px;  width:8%;text-align:left; border-left:1px solid black; border-right:1px solid black; border-top:None; border-bottom:None"><span t-field="l.price_unit"/></td>
