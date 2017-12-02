@@ -1,2 +1,0 @@
-import purchase_order
-import sale_order
